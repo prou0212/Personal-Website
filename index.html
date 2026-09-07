@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Jesse Proulx - Professional Website</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Jesse Proulx" />
+
+    <!-- <link rel="icon" type="image/png" href="pictures/icon/hammer.png?v=2" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #poweron {
+        position: fixed;
+        inset: 0;
+        border-color: white;
+        border-radius: 6px;
+      }
+
+      #bootscreen {
+        display: none;
+        inset: 0;
+        position: fixed;
+        background-color: black;
+      }
+
+      #desktop {
+        inset: 0;
+        position: fixed;
+        display: none;
+      }
+
+      #taskbar {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 34px;
+      }
+
+      .win {
+        position: absolute;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="poweron">
+      <button id="powerbtn">⏻</button>
+    </div>
+    <div id="bootscreen">
+      <span>Booting....</span>
+    </div>
+    <div id="desktop">
+      <div class="icon" data-win="mycomputer">My Computer</div>
+    </div>
+    <div id="taskbar">
+      <button id="startbtn">Start</button>
+    </div>
+    <div class="win" id="win-mycomputer">
+      <div class="titlebar">My Computer <button class="close">×</button></div>
+    </div>
+  </body>
+</html>
