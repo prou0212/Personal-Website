@@ -87,6 +87,16 @@
           const target = icon.dataset.win;
           const win = document.getElementById("win-" + target);
           win.style.display = "flex";
+          const newButton = document.createElement("button");
+          newButton.textContent = icon.textContent;
+          taskbar.append(newButton);
+          newButton.addEventListener("click", () => {
+            if (win.style.display === "none") {
+              win.style.display = "flex";
+            } else {
+              win.style.display = "none";
+            }
+          });
         });
       });
 
@@ -112,6 +122,14 @@
 
       document.addEventListener("mouseup", () => {
         isDragging = false;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          const win = titlebar.closest(".win");
+          win.style.left = e.clientX - offsetX + "px";
+          win.style.top = e.clientY - offsetY + "px";
+        }
       });
     </script>
   </body>
