@@ -96,6 +96,23 @@
           win.style.display = "none";
         });
       });
+
+      let isDragging = false;
+      const titlebar = document.querySelector(".titlebar");
+      let offsetX = 0;
+      let offsetY = 0;
+
+      titlebar.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        const win = titlebar.closest(".win");
+        const rect = win.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
     </script>
   </body>
 </html>
