@@ -42,7 +42,26 @@
 
       .win {
         position: absolute;
+        flex-direction: column;
         display: none;
+        background-color: white;
+        border: 2px solid #0058e6;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        width: 400px;
+        height: 300px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      .titlebar {
+        background: linear-gradient(to right, #0058e6, #3f9dff);
+        color: white;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 6px;
       }
     </style>
   </head>
@@ -94,7 +113,6 @@
               console.log("Error: Audio cannot be played", error);
             }
           }
-
           boot();
         }, 5000);
       });
