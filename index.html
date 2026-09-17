@@ -84,6 +84,18 @@
           bootscreen.style.display = "none";
           desktop.style.display = "block";
           taskbar.style.display = "flex";
+
+          const chime = new Audio("src/audio/startup.mp3");
+          chime.volume = 1;
+          async function boot() {
+            try {
+              await chime.play();
+            } catch (error) {
+              console.log("Error: Audio cannot be played", error);
+            }
+          }
+
+          boot();
         }, 5000);
       });
 
