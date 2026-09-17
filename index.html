@@ -32,12 +32,15 @@
       }
 
       #taskbar {
-        display: none;
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        height: 34px;
+        height: 30px;
+        background: linear-gradient(to bottom, #245edb, #1941a5);
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 0;
       }
 
       .win {
@@ -62,6 +65,27 @@
         justify-content: space-between;
         align-items: center;
         padding: 4px 6px;
+      }
+
+      #startbtn {
+        background: linear-gradient(to bottom, #5fb75f, #3c8f3c);
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        font-weight: bold;
+        height: 100%;
+      }
+
+      #startmenu {
+        position: fixed;
+        left: 0;
+        bottom: 34px;
+        background-color: #f0f0f0;
+        border: 2px solid #0058e6;
+        flex-direction: column;
+        min-width: 180px;
       }
     </style>
   </head>
@@ -94,6 +118,8 @@
       const closeButtons = document.querySelectorAll(".close");
       const startbtn = document.getElementById("startbtn");
       const startmenu = document.getElementById("startmenu");
+
+      taskbar.style.display = "none";
 
       powerbutton.addEventListener("click", () => {
         poweron.style.display = "none";
