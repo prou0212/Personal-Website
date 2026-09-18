@@ -58,8 +58,8 @@
         border: 2px solid #0058e6;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        width: 400px;
-        height: 300px;
+        width: 600px;
+        height: 500px;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
       }
 
@@ -247,18 +247,23 @@
           offsetX = e.clientX - rect.left;
           offsetY = e.clientY - rect.top;
         });
+      });
 
-        document.addEventListener("mouseup", () => {
-          isDragging = false;
-          draggedWin = null;
-        });
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+        draggedWin = null;
+      });
 
-        document.addEventListener("mousemove", (e) => {
-          if (isDragging) {
-            draggedWin.style.left = e.clientX - offsetX + "px";
-            draggedWin.style.top = e.clientY - offsetY + "px";
-          }
-        });
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          const maxX = window.innerWidth - draggedWin.offsetWidth;
+          const maxY =
+            window.innerHeight - draggedWin.offsetHeight - taskbar.offsetHeight;
+          const clampedX = Math.min(maxX, Math.max(0, e.clientX - offsetX));
+          const clampedY = Math.min(maxY, Math.max(0, e.clientY - offsetY));
+          draggedWin.style.left = clampedX + "px";
+          draggedWin.style.top = clampedY + "px";
+        }
       });
     </script>
   </body>
