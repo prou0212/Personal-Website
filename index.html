@@ -94,6 +94,28 @@
         flex-direction: column;
         min-width: 180px;
       }
+
+      .icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75px;
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .icon img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .icon span {
+        color: white;
+        font-size: 12px;
+        text-shadow: 1px 1px 2px black;
+        margin-top: 4px;
+      }
     </style>
   </head>
   <body>
@@ -104,16 +126,40 @@
       <span>Booting....</span>
     </div>
     <div id="desktop">
-      <div class="icon" data-win="mycomputer">My Computer</div>
+      <div class="icon" data-win="mycomputer">
+        <img src="src/pictures/desktop_icons/My Computer.png" />
+        <span>My Computer</span>
+      </div>
+      <div class="icon" data-win="mydocument">
+        <img src="src/pictures/desktop_icons/My Documents.png" />
+        <span>My Documents</span>
+      </div>
+      <div class="icon" data-win="recyclebin">
+        <img src="src/pictures/desktop_icons/Recycle Bin (empty).png" />
+        <span>Recycle Bin</span>
+      </div>
+      <div class="icon" data-win="internetexplorer">
+        <img src="src/pictures/desktop_icons/Internet Explorer 6.png" />
+        <span>Internet Explorer</span>
+      </div>
     </div>
     <div id="taskbar">
       <button id="startbtn">Start</button>
     </div>
     <div class="win" id="win-mycomputer">
-      <div class="titlebar">My Computer <button class="close">×</button></div>
+      <div class="titlebar">My Computer<button class="close">×</button></div>
     </div>
-    <div id="startmenu" style="display: none">
-      <button class="icon" data-win="mycomputer">My Computer</button>
+    <div class="win" id="win-mydocument">
+      <div class="titlebar">My Document<button class="close">×</button></div>
+    </div>
+    <div class="win" id="win-recyclebin">
+      <div class="titlebar">Recycle Bin<button class="close">×</button></div>
+    </div>
+    <div class="win" id="win-internetexplorer">
+      <div class="titlebar">
+        Internet Explorer
+        <button class="close">×</button>
+      </div>
     </div>
     <script>
       const poweron = document.getElementById("poweron");
