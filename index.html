@@ -203,6 +203,7 @@
           win.style.display = "flex";
           const newButton = document.createElement("button");
           newButton.textContent = icon.textContent;
+          win.taskbarButton = newButton;
           taskbar.append(newButton);
           newButton.addEventListener("click", () => {
             if (win.style.display === "none") {
@@ -225,6 +226,7 @@
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
           win.style.display = "none";
+          win.taskbarButton.remove();
         });
       });
 
