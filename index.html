@@ -8,6 +8,61 @@
     <!-- <link rel="icon" type="image/png" href="pictures/icon/hammer.png?v=2" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      @keyframes scrollBlock {
+        from {
+          left: -30px;
+        }
+        to {
+          left: 120px;
+        }
+      }
+
+      #flag {
+        width: 350px;
+      }
+
+      #wordmark {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 150px;
+      }
+
+      #loadbar {
+        position: relative;
+        overflow: hidden;
+        width: 120px;
+        height: 15px;
+        border: solid 1px white;
+        border-radius: 5px;
+        padding: 2px;
+      }
+
+      #loadbar span {
+        animation: scrollBlock 1s linear infinite;
+        position: absolute;
+        width: 10px;
+        height: 15px;
+        background-color: #0058e6;
+        border-radius: 3px;
+        background: linear-gradient(
+          to bottom,
+          #2838c7 0%,
+          #5979ef 25%,
+          #869ef3 45%,
+          #5979ef 65%,
+          #2838c7 100%
+        );
+      }
+
+      #loadbar span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      #loadbar span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
       #poweron {
         position: fixed;
         inset: 0;
@@ -18,11 +73,13 @@
 
       #bootscreen {
         display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
         inset: 0;
         position: fixed;
         background-color: black;
-        align-items: center;
-        justify-content: center;
       }
 
       #desktop {
@@ -123,23 +180,37 @@
       <button id="powerbtn">⏻</button>
     </div>
     <div id="bootscreen">
-      <span>Booting....</span>
+      <img
+        id="flag"
+        src="src/pictures/bootup_icons/windows_xp_logo.png"
+        alt="microsoft xp logo"
+      />
+      <div id="loadbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <img
+        id="wordmark"
+        src="src/pictures/bootup_icons/microsoft_logo.png"
+        alt="official microsoft logo"
+      />
     </div>
     <div id="desktop">
       <div class="icon" data-win="mycomputer">
-        <img src="src/pictures/desktop_icons/My Computer.png" />
+        <img src="src/pictures/desktop_icons/My Computer.png" alt="" />
         <span>My Computer</span>
       </div>
       <div class="icon" data-win="mydocument">
-        <img src="src/pictures/desktop_icons/My Documents.png" />
+        <img src="src/pictures/desktop_icons/My Documents.png" alt="" />
         <span>My Documents</span>
       </div>
       <div class="icon" data-win="recyclebin">
-        <img src="src/pictures/desktop_icons/Recycle Bin (empty).png" />
+        <img src="src/pictures/desktop_icons/Recycle Bin (empty).png" alt="" />
         <span>Recycle Bin</span>
       </div>
       <div class="icon" data-win="internetexplorer">
-        <img src="src/pictures/desktop_icons/Internet Explorer 6.png" />
+        <img src="src/pictures/desktop_icons/Internet Explorer 6.png" alt="" />
         <span>Internet Explorer</span>
       </div>
     </div>
