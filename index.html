@@ -4,10 +4,92 @@
     <title>Jesse Proulx - Professional Website</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Jesse Proulx" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Lexend+Zetta:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- <link rel="icon" type="image/png" href="pictures/icon/hammer.png?v=2" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      .lexend-zetta {
+        font-family: "Lexend Zetta", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 800;
+        font-style: normal;
+      }
+
+      .ibm-plex-serif-regular {
+        font-family: "IBM Plex Serif", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      #poweron {
+        position: fixed;
+        inset: 0;
+        border-color: white;
+        border-radius: 6px;
+        background-color: black;
+      }
+
+      #intro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px;
+      }
+
+      #intro button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid #4d8dff;
+        background: transparent;
+        color: #4d8dff;
+        font-size: 32px;
+        cursor: pointer;
+        transition:
+          box-shadow 0.2s,
+          background-color 0.2s;
+      }
+
+      #poweron button:hover {
+        box-shadow: 0 0 20px #0058e6;
+        background-color: rgba(0, 88, 230, 0.2);
+      }
+
+      #poweron button:active {
+        transform: scale(0.95);
+      }
+
+      #intro img {
+        width: 200px;
+        height: 200px;
+        flex-shrink: 0;
+        object-fit: cover;
+        border: 3px solid #0058e6;
+        border-radius: 50%;
+      }
+
+      #intro-title {
+        color: white;
+        font-size: 32px;
+        text-align: center;
+      }
+
+      #intro-descr {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        width: 90%;
+        max-width: 1000px;
+      }
+
       @keyframes scrollBlock {
         from {
           left: -30px;
@@ -61,14 +143,6 @@
 
       #loadbar span:nth-child(3) {
         animation-delay: 0.2s;
-      }
-
-      #poweron {
-        position: fixed;
-        inset: 0;
-        border-color: white;
-        border-radius: 6px;
-        background-color: black;
       }
 
       #bootscreen {
@@ -177,7 +251,19 @@
   </head>
   <body>
     <div id="poweron">
-      <button id="powerbtn">⏻</button>
+      <div id="intro">
+        <img
+          src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+          alt="jesse proulx profile picture"
+        />
+        <span class="lexend-zetta" id="intro-title"
+          >Jesse Proulx Professional Website</span
+        >
+        <span class="ibm-plex-serif-regular" id="intro-descr"
+          >Press the power button to begin</span
+        >
+        <button id="powerbtn">⏻</button>
+      </div>
     </div>
     <div id="bootscreen">
       <img
