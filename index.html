@@ -169,6 +169,19 @@
         );
       }
 
+      #desktop-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 20px;
+        padding: 10px;
+      }
+
       #taskbar {
         position: fixed;
         left: 0;
@@ -234,6 +247,7 @@
         text-align: center;
         cursor: pointer;
         padding: 10px;
+        text-decoration: none;
       }
 
       .icon img {
@@ -283,21 +297,48 @@
       />
     </div>
     <div id="desktop">
-      <div class="icon" data-win="mycomputer">
-        <img src="src/pictures/desktop_icons/My Computer.png" alt="" />
-        <span>My Computer</span>
-      </div>
-      <div class="icon" data-win="mydocument">
-        <img src="src/pictures/desktop_icons/My Documents.png" alt="" />
-        <span>My Documents</span>
-      </div>
-      <div class="icon" data-win="recyclebin">
-        <img src="src/pictures/desktop_icons/Recycle Bin (empty).png" alt="" />
-        <span>Recycle Bin</span>
-      </div>
-      <div class="icon" data-win="internetexplorer">
-        <img src="src/pictures/desktop_icons/Internet Explorer 6.png" alt="" />
-        <span>Internet Explorer</span>
+      <div id="desktop_icons">
+        <div class="icon" data-win="mycomputer">
+          <img src="src/pictures/desktop_icons/My Computer.png" alt="" />
+          <span>My Computer</span>
+        </div>
+        <div class="icon" data-win="mydocument">
+          <img src="src/pictures/desktop_icons/My Documents.png" alt="" />
+          <span>My Documents</span>
+        </div>
+        <div class="icon" data-win="recyclebin">
+          <img
+            src="src/pictures/desktop_icons/Recycle Bin (empty).png"
+            alt=""
+          />
+          <span>Recycle Bin</span>
+        </div>
+        <div class="icon" data-win="internetexplorer">
+          <img
+            src="src/pictures/desktop_icons/Internet Explorer 6.png"
+            alt=""
+          />
+          <span>Internet Explorer</span>
+        </div>
+        <a class="icon" href="https://github.com/prou0212" target="_blank">
+          <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
+          <span>GitHub</span>
+        </a>
+        <a
+          class="icon"
+          href="https://www.linkedin.com/in/jesse-proulx-09572132a/"
+          target="_blank"
+        >
+          <img
+            src="src/pictures/desktop_icons/linkedin.png"
+            alt="Linkedin icon"
+          />
+          <span>GitHub</span>
+        </a>
+        <a class="icon" href="mailto:jtaproulx1@hotmail.com" target="_blank">
+          <img src="src/pictures/desktop_icons/Email.png" alt="github icon" />
+          <span>Email Me</span>
+        </a>
       </div>
     </div>
     <div id="taskbar">
