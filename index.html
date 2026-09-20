@@ -92,10 +92,10 @@
 
       @keyframes scrollBlock {
         from {
-          left: -30px;
+          left: -80px;
         }
         to {
-          left: 120px;
+          left: 170px;
         }
       }
 
@@ -113,7 +113,7 @@
       #loadbar {
         position: relative;
         overflow: hidden;
-        width: 120px;
+        width: 175px;
         height: 15px;
         border: solid 1px white;
         border-radius: 5px;
@@ -121,10 +121,11 @@
       }
 
       #loadbar span {
-        animation: scrollBlock 1s linear infinite;
+        animation: scrollBlock 2.5s linear infinite;
         position: absolute;
-        width: 10px;
+        width: 13px;
         height: 15px;
+        gap: 5px;
         background-color: #0058e6;
         border-radius: 3px;
         background: linear-gradient(
@@ -138,11 +139,11 @@
       }
 
       #loadbar span:nth-child(2) {
-        animation-delay: 0.1s;
+        animation-delay: 0.155s;
       }
 
       #loadbar span:nth-child(3) {
-        animation-delay: 0.2s;
+        animation-delay: 0.31s;
       }
 
       #bootscreen {
