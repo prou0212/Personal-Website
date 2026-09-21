@@ -179,7 +179,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         align-content: flex-start;
-        gap: 20px;
+        gap: 10px;
         padding: 10px;
       }
 
@@ -262,6 +262,58 @@
         text-shadow: 1px 1px 2px black;
         margin-top: 4px;
       }
+
+      .win-body {
+        overflow-y: auto;
+        padding: 16px;
+        font-family: Tahoma, sans-serif;
+        font-size: 14px;
+        color: black;
+      }
+
+      #win-aboutme {
+        height: 340px;
+      }
+
+      .about-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .about-header img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #0058e6;
+        flex-shrink: 0;
+      }
+
+      .subtitle {
+        color: #555;
+        margin: 4px 0 0;
+      }
+
+      #jesse-favourite {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      #jesse-favourite h3 {
+        margin: 5px;
+      }
+
+      #jesse-favourite ul {
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      #jesse-favourite li {
+        padding: 3px;
+      }
     </style>
   </head>
   <body>
@@ -298,28 +350,28 @@
       />
     </div>
     <div id="desktop">
-      <div id="desktop_icons">
-        <div class="icon" data-win="mycomputer">
-          <img src="src/pictures/desktop_icons/My Computer.png" alt="" />
-          <span>My Computer</span>
+      <div id="desktop-icons">
+        <div class="icon" data-win="aboutme">
+          <img src="src/pictures/desktop_icons/My Computer.png" alt="aboutme" />
+          <span>About Me</span>
         </div>
-        <div class="icon" data-win="mydocument">
-          <img src="src/pictures/desktop_icons/My Documents.png" alt="" />
-          <span>My Documents</span>
+        <div class="icon" data-win="resume">
+          <img src="src/pictures/desktop_icons/My Documents.png" alt="resume" />
+          <span>Résumé</span>
         </div>
-        <div class="icon" data-win="recyclebin">
+        <div class="icon" data-win="hobbies">
           <img
             src="src/pictures/desktop_icons/Recycle Bin (empty).png"
-            alt=""
+            alt="hobbies"
           />
-          <span>Recycle Bin</span>
+          <span>Hobbies</span>
         </div>
-        <div class="icon" data-win="internetexplorer">
+        <div class="icon" data-win="projects">
           <img
             src="src/pictures/desktop_icons/Internet Explorer 6.png"
-            alt=""
+            alt="projects"
           />
-          <span>Internet Explorer</span>
+          <span>Projects</span>
         </div>
         <a class="icon" href="https://github.com/prou0212" target="_blank">
           <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
@@ -334,10 +386,10 @@
             src="src/pictures/desktop_icons/linkedin.png"
             alt="Linkedin icon"
           />
-          <span>GitHub</span>
+          <span>Linkedin</span>
         </a>
         <a class="icon" href="mailto:jtaproulx1@hotmail.com" target="_blank">
-          <img src="src/pictures/desktop_icons/Email.png" alt="github icon" />
+          <img src="src/pictures/desktop_icons/Email.png" alt="email icon" />
           <span>Email Me</span>
         </a>
       </div>
@@ -345,20 +397,86 @@
     <div id="taskbar">
       <button id="startbtn">Start</button>
     </div>
-    <div class="win" id="win-mycomputer">
-      <div class="titlebar">My Computer<button class="close">×</button></div>
+    <div class="win" id="win-aboutme">
+      <div class="titlebar">About Me<button class="close">×</button></div>
+      <div class="win-body">
+        <div class="about-header">
+          <img
+            src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+            alt="jesse_proulx_profile"
+          />
+          <div>
+            <h2>Jesse Proulx</h2>
+            <span class="subtitle">Aspiring Web Developer</span>
+          </div>
+        </div>
+        <span
+          >I'm an aspiring web developer who enjoys building things from
+          scratch, like this Windows XP-style portfolio made with HTML, CSS, and
+          JavaScript. I'm currently learning React, TypeScript, and REST APIs,
+          and I'm looking for my first web development role.<br />
+        </span>
+        <span
+          ><br />I got into coding because of my love for building, creating and
+          being artistic with my projects that I do. Making sure the end result
+          is perfect for anyone who has access to the project.</span
+        >
+      </div>
     </div>
-    <div class="win" id="win-mydocument">
-      <div class="titlebar">My Document<button class="close">×</button></div>
+    <div class="win" id="win-resume">
+      <div class="titlebar">Résumé<button class="close">×</button></div>
+      <div class="win-body"></div>
     </div>
-    <div class="win" id="win-recyclebin">
-      <div class="titlebar">Recycle Bin<button class="close">×</button></div>
+    <div class="win" id="win-hobbies">
+      <div class="titlebar">Hobbies<button class="close">×</button></div>
+      <div class="win-body">
+        <h2>Hobbies (Outside of Coding)</h2>
+        <ul>
+          <li>Camping</li>
+          <li>Playing/Composing Music</li>
+          <li>Going on Adventures with Friends</li>
+          <li>Playing Retro/Modern Video Games</li>
+          <li>Playing Music from my Vinyl Record Collection</li>
+        </ul>
+        <h2>Jesse's Favourites</h2>
+        <div id="jesse-favourite">
+          <div id="list1">
+            <h3>Favourite Video Games</h3>
+            <ul>
+              <li>Final Fantasy VII</li>
+              <li>The Legend of Zelda:<br />Ocarina of Time</li>
+              <li>Crazy Taxi</li>
+            </ul>
+            <h3>Favourite Foods</h3>
+            <ul>
+              <li>Chicken Parmesan</li>
+              <li>Spaghetti</li>
+              <li>Pizza</li>
+            </ul>
+          </div>
+          <div id="list2">
+            <h3>Favourite Vinyl Albums to Play</h3>
+            <ul>
+              <li>Pink Floyd - The Dark Side of the Moon</li>
+              <li>The Beach Boys - Pet Sounds</li>
+              <li>Nirvana - Nevermind</li>
+            </ul>
+            <h3>Favourite Movies</h3>
+            <ul>
+              <li>Back to the Future</li>
+              <li>Jurassic Park</li>
+              <li>Obsession</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="win" id="win-internetexplorer">
+    <div class="win" id="win-projects">
       <div class="titlebar">
-        Internet Explorer
+        Projects
         <button class="close">×</button>
       </div>
+      <div class="win-body"></div>
     </div>
     <div id="startmenu" style="display: none">
       <button class="icon" data-win="mycomputer">My Computer</button>
