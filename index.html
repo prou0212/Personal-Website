@@ -275,6 +275,20 @@
         height: 340px;
       }
 
+      #win-downloadcomplete .win-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex: 1;
+      }
+
+      #win-downloadcomplete {
+        height: 200px;
+        width: 350px;
+      }
+
       .about-header {
         display: flex;
         align-items: center;
@@ -298,7 +312,32 @@
 
       #skills-section {
         display: flex;
-        display: 1;
+      }
+
+      #download-content {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+      }
+
+      #divider::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: #555;
+        margin: 16px 0;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background-color: #0058e6;
+        color: white;
+        padding: 8px 16px;
+        margin: 10px 0;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
       }
 
       #jesse-favourite {
@@ -436,12 +475,11 @@
         <p>
           Computer Programming diploma graduate from Algonquin College with
           hands-on experience building responsive, cross-browser web
-          applications using HTML5, CSS3, JavaScript, and React. Skilled at
-          integrating REST APIs and third-party services, working with SQL and
+          applications using HTML5, CSS3, and JavaScript, working with SQL and
           NoSQL databases, and converting UI/UX designs into clean,
-          well-documented, production-ready code. Comfortable troubleshooting
-          and debugging issues and collaborating with designers and stakeholders
-          through the full project lifecycle in a Git/GitHub workflow.
+          well-documented code. Freelance experience managing a project from
+          client discovery through deployment and ongoing maintenance.
+          Developing familiarity with React, REST APIs, and JSON.
         </p>
         <h3>Education</h3>
         <p>Computer Programming Diploma | 2024 – 2026</p>
@@ -496,21 +534,51 @@
         <p class="subtitle">Orchard Walk Retirement Home, Manotick, ON</p>
         <ul>
           <li>
-            Supervised a team of 15 servers to ensure seamless dining service.
+            Supervise a team of 15 servers to ensure seamless dining service.
           </li>
           <li>
-            Ensured compliance with RHRA and Ottawa Public Health regulations,
+            Ensure compliance with RHRA and Ottawa Public Health regulations,
             including resident attendance and proper sanitation.
           </li>
           <li>
-            Managed staff scheduling, optimizing workforce efficiency and
+            Manage staff scheduling, optimizing workforce efficiency and
             coverage.
           </li>
           <li>
-            Oversaw recruitment of new servers, handling employee documentation
+            Oversee recruitment of new servers, handling employee documentation
             and training.
           </li>
         </ul>
+        <span id="divider"></span>
+        <div id="download-content">
+          <div>
+            <h3>My Résumé</h3>
+            <p class="subtitle">
+              Download a copy of my Résumé by clicking the button
+            </p>
+            <a
+              href="src/docs/Jesse_Proulx_Resume.pdf"
+              download
+              class="download-btn"
+            >
+              Download Résumé
+            </a>
+          </div>
+          <div>
+            <h3>Letter of Recommendation</h3>
+            <p class="subtitle">
+              A Letter of Recommendation from Jason Mombourquette, one of my
+              professors.
+            </p>
+            <a
+              href="src/docs/Jesse_Proulx_Reference_Letter.pdf"
+              download
+              class="download-btn"
+            >
+              Download Letter of Recommendation
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="win" id="win-hobbies">
@@ -567,6 +635,16 @@
     <div id="startmenu" style="display: none">
       <button class="icon" data-win="mycomputer">My Computer</button>
     </div>
+    <div class="win" id="win-downloadcomplete" style="display: none">
+      <div class="titlebar">
+        Download in Progress<button class="close">×</button>
+      </div>
+      <div class="win-body">
+        <h3>Currently Downloading</h3>
+        <p>The document is downloading!</p>
+        <button id="confirm-btn">Ok</button>
+      </div>
+    </div>
     <script>
       const poweron = document.getElementById("poweron");
       const bootscreen = document.getElementById("bootscreen");
@@ -577,13 +655,18 @@
       const closeButtons = document.querySelectorAll(".close");
       const startbtn = document.getElementById("startbtn");
       const startmenu = document.getElementById("startmenu");
+      const downloadbtn = document.querySelectorAll(".download-btn");
+      const downloadWin = document.getElementById("win-downloadcomplete");
+      const confirmbtn = document.getElementById("confirm-btn");
 
       taskbar.style.display = "none";
 
+      //Clicking Power Button on Home Screen
       powerbutton.addEventListener("click", () => {
         poweron.style.display = "none";
         bootscreen.style.display = "flex";
 
+        //Timer for Loading Screen
         setTimeout(() => {
           bootscreen.style.display = "none";
           desktop.style.display = "block";
@@ -667,6 +750,16 @@
           draggedWin.style.left = clampedX + "px";
           draggedWin.style.top = clampedY + "px";
         }
+      });
+
+      downloadbtn.forEach(function (downloadContent) {
+        downloadContent.addEventListener("click", () => {
+          downloadWin.style.display = "flex";
+        });
+      });
+
+      confirmbtn.addEventListener("click", () => {
+        downloadWin.style.display = "none";
       });
     </script>
   </body>
