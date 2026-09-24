@@ -189,10 +189,24 @@
         right: 0;
         bottom: 0;
         height: 30px;
-        background: linear-gradient(to bottom, #245edb, #1941a5);
+        background-color: #2660c1;
         display: flex;
         align-items: center;
         padding: 0 4px 0 0;
+      }
+
+      .taskbar-btn {
+        height: 24px;
+        width: 150px;
+        text-align: left;
+        margin: 0 3px;
+        padding: 0 10px;
+        background-color: #3a7ff4;
+        color: white;
+        border: 1px solid #2971d5;
+        border-radius: 3px;
+        font-size: 12px;
+        cursor: pointer;
       }
 
       .win {
@@ -208,15 +222,38 @@
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
       }
 
+      .close {
+        color: white;
+        background-color: red;
+        font-size: 15px;
+        border-radius: 3px;
+        border-color: white;
+        border-style: solid;
+        border-width: 1px;
+        margin-left: auto;
+      }
+
       .titlebar {
         background: linear-gradient(to right, #0058e6, #3f9dff);
         color: white;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: flex-start;
         padding: 4px 6px;
+        gap: 10px;
+      }
+
+      .titlebar-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .taskbar-btn img {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        margin-right: 4px;
       }
 
       #startbtn {
@@ -441,7 +478,13 @@
       <button id="startbtn">Start</button>
     </div>
     <div class="win" id="win-aboutme">
-      <div class="titlebar">About Me<button class="close">×</button></div>
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/desktop_icons/My Computer.png"
+          alt="about me icon"
+        />About Me<button class="close">×</button>
+      </div>
       <div class="win-body">
         <div class="about-header">
           <img
@@ -453,21 +496,27 @@
             <span class="subtitle">Aspiring Web Developer</span>
           </div>
         </div>
-        <span
-          >I'm an aspiring web developer who enjoys building things from
-          scratch, like this Windows XP-style portfolio made with HTML, CSS, and
+        <p>
+          I'm an aspiring web developer who enjoys building things from scratch,
+          like this Windows XP-style portfolio made with HTML, CSS, and
           JavaScript. I'm currently learning React, TypeScript, and REST APIs,
-          and I'm looking for my first web development role.<br />
-        </span>
-        <span
-          ><br />I got into coding because of my love for building, creating and
-          being artistic with my projects that I do. Making sure the end result
-          is perfect for anyone who has access to the project.</span
-        >
+          and I'm looking for my first web development role.
+        </p>
+        <p>
+          I got into coding because of my love for building, creating and being
+          artistic with my projects that I do. Making sure the end result is
+          perfect for anyone who has access to the project.
+        </p>
       </div>
     </div>
     <div class="win" id="win-resume">
-      <div class="titlebar">Résumé<button class="close">×</button></div>
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/desktop_icons/My Documents.png"
+          alt="about me icon"
+        />Résumé<button class="close">×</button>
+      </div>
       <div class="win-body">
         <h2>Jesse Proulx</h2>
         <p class="subtitle">Aspiring Web Developer | Ottawa, Canada</p>
@@ -582,7 +631,13 @@
       </div>
     </div>
     <div class="win" id="win-hobbies">
-      <div class="titlebar">Hobbies<button class="close">×</button></div>
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/desktop_icons/Recycle Bin (empty).png"
+          alt="about me icon"
+        />Hobbies<button class="close">×</button>
+      </div>
       <div class="win-body">
         <h2>Hobbies (Outside of Coding)</h2>
         <ul>
@@ -627,6 +682,11 @@
     </div>
     <div class="win" id="win-projects">
       <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/desktop_icons/Internet Explorer 6.png"
+          alt="about me icon"
+        />
         Projects
         <button class="close">×</button>
       </div>
@@ -642,7 +702,7 @@
       <div class="win-body">
         <h3>Currently Downloading</h3>
         <p>The document is downloading!</p>
-        <button id="confirm-btn">Ok</button>
+        <button id="confirm-btn">OK</button>
       </div>
     </div>
     <script>
@@ -691,8 +751,13 @@
           const win = document.getElementById("win-" + target);
           win.style.display = "flex";
           const newButton = document.createElement("button");
-          newButton.textContent = icon.textContent;
+          const iconImg = icon.querySelector("img");
+          const taskBarIcon = document.createElement("img");
+          taskBarIcon.src = iconImg.src;
+          newButton.classList.add("taskbar-btn");
           win.taskbarButton = newButton;
+          newButton.textContent = icon.textContent;
+          newButton.prepend(taskBarIcon);
           taskbar.append(newButton);
           newButton.addEventListener("click", () => {
             if (win.style.display === "none") {
@@ -711,11 +776,14 @@
           startmenu.style.display = "none";
         }
       });
+
       closeButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
           win.style.display = "none";
-          win.taskbarButton.remove();
+          if (win.taskbarButton !== undefined) {
+            win.taskbarButton.remove();
+          }
         });
       });
 
