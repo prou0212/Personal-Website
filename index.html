@@ -201,12 +201,33 @@
         text-align: left;
         margin: 0 3px;
         padding: 0 10px;
-        background-color: #3a7ff4;
         color: white;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        background-color: #2566e5;
         border: 1px solid #2971d5;
         border-radius: 3px;
         font-size: 12px;
         cursor: pointer;
+      }
+
+      .taskbar-btn.active {
+        background-color: #1e52b7;
+        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .taskbar-btn:hover {
+        background-color: #3c81f3;
+      }
+
+      .taskbaar-btn.active:hover {
+        background-color: #4ba1ff;
+      }
+
+      .taskbar-btn img {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        margin-right: 4px;
       }
 
       .win {
@@ -247,13 +268,6 @@
       .titlebar-icon {
         width: 20px;
         height: 20px;
-      }
-
-      .taskbar-btn img {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-        margin-right: 4px;
       }
 
       #startbtn {
@@ -755,6 +769,7 @@
           const taskBarIcon = document.createElement("img");
           taskBarIcon.src = iconImg.src;
           newButton.classList.add("taskbar-btn");
+          newButton.classList.add("active");
           win.taskbarButton = newButton;
           newButton.textContent = icon.textContent;
           newButton.prepend(taskBarIcon);
@@ -762,8 +777,10 @@
           newButton.addEventListener("click", () => {
             if (win.style.display === "none") {
               win.style.display = "flex";
+              newButton.classList.add("active");
             } else {
               win.style.display = "none";
+              newButton.classList.remove("active");
             }
           });
         });
