@@ -335,6 +335,11 @@
         flex: 1;
       }
 
+      #win-projects {
+        width: 600px;
+        height: 500px;
+      }
+
       #win-downloadcomplete {
         height: 200px;
         width: 350px;
@@ -371,10 +376,10 @@
         padding: 10px;
       }
 
-      #divider::after {
+      .divider::after {
         content: "";
         display: block;
-        height: 1px;
+        height: 3px;
         background-color: #555;
         margin: 16px 0;
       }
@@ -407,6 +412,22 @@
 
       #jesse-favourite li {
         padding: 3px;
+      }
+
+      .picture-desc {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .picture-desc img {
+        width: 500px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .picture-desc p {
+        margin: 0;
+        padding: 5px 15px;
       }
     </style>
   </head>
@@ -612,7 +633,7 @@
             and training.
           </li>
         </ul>
-        <span id="divider"></span>
+        <span class="divider"></span>
         <div id="download-content">
           <div>
             <h3>My Résumé</h3>
@@ -704,7 +725,130 @@
         Projects
         <button class="close">×</button>
       </div>
-      <div class="win-body"></div>
+      <div class="win-body">
+        <h2>Professional Projects</h2>
+        <span class="divider"></span>
+        <h3>Meticulous Pete Ltd. (Sept 2025 - Apr 2026)</h3>
+        <div class="picture-desc">
+          <img
+            src="src/pictures/projects_pic/Meticulous_Pete_Ltd.png"
+            alt="Meticulous_Pete_Ltd"
+          />
+          <p>
+            Acting as the primary point of contact for the client to define
+            business goals, project scope, and user requirements. Designing a
+            custom website architecture focused on the client's specific target
+            audience to improve digital presence and brand engagement. Managing
+            the full project lifecycle from initial wireframes and discovery
+            calls to deployment and testing. Developing a responsive front-end
+            using HTML, CSS, JavaScript ensuring browser and mobile
+            capability.<br />Website Link:
+            <a href="https://www.meticulouspete.com/" target="_blank"
+              >https://www.meticulouspete.com/</a
+            >
+          </p>
+        </div>
+        <h2>Personal Projects</h2>
+        <span class="divider"></span>
+        <h3>Valence Noir (In Progress)</h3>
+        <div class="picture-desc">
+          <img
+            src="src/pictures/projects_pic/Valence Noir.png"
+            alt="Valence Noir Image"
+          />
+          <p>
+            A personal front-end project built to practice HTML, CSS, and
+            JavaScript, designing a fictional luxury fashion e-commerce site in
+            the style of heritage houses like Chanel and Gucci. So far, I've
+            built the home page, focused on clean typography, a refined color
+            palette, and a layout meant to reflect classic, old-money elegance.
+            Next planned steps include shopping pages where users can browse and
+            filter products. The project isn't live and is hosted on GitHub as
+            an ongoing space to practice front-end design and development.<br />GitHub
+            Repo Link:
+            <a
+              href="https://github.com/prou0212/XYZ-Manufacturing-Company"
+              target="_blank"
+              >https://github.com/prou0212/XYZ-Manufacturing-Company</a
+            >
+          </p>
+        </div>
+        <h2>Academic Projects</h2>
+        <span class="divider"></span>
+        <h3>XYZ Manufacturing Database Design (Fall Term 2025)</h3>
+        <div class="picture-desc">
+          <img
+            src="src/pictures/projects_pic/Postgres.png"
+            alt="Database Assignment 2"
+          />
+          <p>
+            As part of a team of 3, The team designed a relational database for
+            a manufacturing company's customer order and product application.
+            Starting from a set of business requirements, I helped identify
+            entities, business rules, and candidate keys, then built conceptual
+            and physical entity-relationship diagrams, normalizing the design
+            and resolving many-to-many relationships between customers, orders,
+            products, and parts. The team wrote the DDL scripts to create the
+            tables, keys, and constraints, populated the database with test
+            data, and authored a series of SQL queries covering joins,
+            aggregates, GROUP BY/HAVING, and subqueries, along with dynamic and
+            materialized views.<br />GitHub Repo Link:
+            <a
+              href="https://github.com/prou0212/XYZ-Manufacturing-Company"
+              target="_blank"
+              >https://github.com/prou0212/XYZ-Manufacturing-Company</a
+            >
+          </p>
+        </div>
+        <div class="picture-desc">
+          <h3>Record Collection Database Design (Winter Term 2026)</h3>
+          <img
+            src="src/pictures/projects_pic/recordcollection.png"
+            alt="Record Collection Image"
+          />
+          <p>
+            As part of a team of 3, I helped design and build a database
+            application for managing a vinyl record collection, tracking
+            artists, albums, songs, genres, and record labels. The system uses
+            Microsoft SQL Server as the backend, connected through SSMS, with
+            Microsoft Access as the frontend, providing forms for adding,
+            editing, and searching records, along with built-in reports for
+            albums by artist, albums by genre, and songs by album. I worked on
+            modeling the database relationships, including many-to-many links
+            between artists, albums, songs, and producers, and helped build out
+            the Access forms, search functionality, and backup/restore process
+            for the SQL Server database.<br />Website Link:
+            <a
+              href="https://github.com/prou0212/Record-Collection"
+              target="_blank"
+              >https://github.com/prou0212/Record-Collection</a
+            >
+          </p>
+        </div>
+        <div class="picture-desc">
+          <h3>Recipe Management System (Winter Term 2026)</h3>
+          <img
+            src="src/pictures/projects_pic/Web Assignment 2.png"
+            alt="Recipe Management"
+          />
+          <p>
+            As part of a cross-functional team of 3, including designers, I
+            helped build a responsive full-stack web application using HTML,
+            CSS, JavaScript, and PHP. I converted UI/UX designs into clean,
+            functional front-end code, and designed and implemented a user
+            authentication system that enabled personalized experiences and
+            saved preferences for each user. Throughout the project, I took part
+            in team code reviews and used Git/GitHub for version control,
+            helping maintain a clean, collaborative commit history.<br />Website
+            Link:
+            <a
+              href="https://github.com/prou0212/Web-Assignment-2"
+              target="_blank"
+              >https://github.com/prou0212/Web-Assignment-2</a
+            >
+          </p>
+        </div>
+      </div>
     </div>
     <div id="startmenu" style="display: none">
       <button class="icon" data-win="mycomputer">My Computer</button>
