@@ -318,7 +318,7 @@
         overflow-y: auto;
         padding: 16px;
         font-family: Tahoma, sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         color: black;
       }
 
@@ -414,20 +414,40 @@
         padding: 3px;
       }
 
-      .picture-desc {
-        display: flex;
-        flex-direction: column;
-      }
-
       .picture-desc img {
-        width: 500px;
+        display: block;
+        width: 100%;
         height: auto;
-        object-fit: contain;
       }
 
       .picture-desc p {
         margin: 0;
         padding: 5px 15px;
+      }
+
+      .certificate-container {
+        display: flex;
+      }
+
+      .certificate-container a {
+        flex-shrink: 0;
+      }
+
+      .certificate-container img {
+        display: block;
+        width: 250px;
+        height: auto;
+        padding: 10px;
+      }
+
+      .cert-title-desc {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .cert-title-desc p {
+        margin: 0;
       }
     </style>
   </head>
@@ -487,6 +507,13 @@
             alt="projects"
           />
           <span>Projects</span>
+        </div>
+        <div class="icon" data-win="certificate">
+          <img
+            src="src/pictures/desktop_icons/Minesweeper.png"
+            alt="certificate"
+          />
+          <span>Certificates</span>
         </div>
         <a class="icon" href="https://github.com/prou0212" target="_blank">
           <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
@@ -549,7 +576,7 @@
         <img
           class="titlebar-icon"
           src="src/pictures/desktop_icons/My Documents.png"
-          alt="about me icon"
+          alt="resume icon"
         />Résumé<button class="close">×</button>
       </div>
       <div class="win-body">
@@ -670,7 +697,7 @@
         <img
           class="titlebar-icon"
           src="src/pictures/desktop_icons/Recycle Bin (empty).png"
-          alt="about me icon"
+          alt="hobbies icon"
         />Hobbies<button class="close">×</button>
       </div>
       <div class="win-body">
@@ -720,7 +747,7 @@
         <img
           class="titlebar-icon"
           src="src/pictures/desktop_icons/Internet Explorer 6.png"
-          alt="about me icon"
+          alt="projects icon"
         />
         Projects
         <button class="close">×</button>
@@ -847,6 +874,176 @@
               >https://github.com/prou0212/Web-Assignment-2</a
             >
           </p>
+        </div>
+      </div>
+    </div>
+    <div class="win" id="win-certificate">
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/desktop_icons/Minesweeper.png"
+          alt="certificate icon"
+        />Certificates<button class="close">×</button>
+      </div>
+      <div class="win-body">
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Software Testing Foundations Test Techniques.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Software Testing Foundations Test Techniques.jpg"
+              alt="Software Testing Foundations: Test Techniques"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Software Testing Foundations Test Techniques</h3>
+            <p>
+              Covered core software testing techniques, including equivalence
+              partitioning, boundary value analysis, decision table testing, and
+              state transition testing, learning how to apply each method to
+              design effective test cases that catch defects with fewer, more
+              targeted tests.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Agile at Work Planning with Agile User Stories 2015.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Agile at Work Planning with Agile User Stories 2015.jpg"
+              alt="Agile at Work: Planning with Agile User Stories"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Agile at Work: Planning with Agile User Stories (2015)</h3>
+            <p>
+              Covered how to write and prioritize user stories, including
+              acceptance criteria and story sizing, as a way to capture
+              requirements from the user's perspective and guide iterative
+              development.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Agile Development Practices.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Agile Development Practices.jpg"
+              alt="Agile Development Practices"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Agile Development Practices</h3>
+            <p>
+              Covered day-to-day Agile practices such as sprint planning, daily
+              stand-ups, iterative delivery, and retrospectives, and how these
+              practices help teams adapt quickly and deliver value continuously.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Agile at Work Building Your Agile Team 2015.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Agile at Work Building Your Agile Team 2015.jpg"
+              alt="Agile at Work Building Your Agile Team 2015"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Agile at Work: Building Your Agile Team (2015)</h3>
+            <p>
+              Covered how to structure and support an effective Agile team,
+              including team roles, communication practices, and fostering the
+              collaboration and trust needed for a team to self-organize.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Agile Foundations.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Agile Foundations.jpg"
+              alt="Agile Foundations"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Agile Foundations</h3>
+            <p>
+              Covered the core principles and values behind Agile methodologies,
+              including iterative development, adaptive planning, and
+              cross-functional collaboration, as an introduction to how Agile
+              teams plan and deliver work.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Agile Software Development Clean Coding Practices.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Agile Software Development Clean Coding Practices.jpg"
+              alt="Agile Software Development Clean Coding Practices"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Agile Software Development Clean Coding Practices</h3>
+            <p>
+              Covered writing clean, maintainable code within an Agile workflow,
+              including naming conventions, function design, refactoring, and
+              code smells, with an emphasis on code that's easy for a team to
+              read and extend.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Software Testing Foundations Testing throughout the SDLC.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Software Testing Foundations Testing throughout the SDLC.jpg"
+              alt="Software Testing Foundations Testing throughout the SDLC"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Software Testing Foundations Testing throughout the SDLC</h3>
+            <p>
+              Covered how testing fits into each phase of the software
+              development lifecycle, from requirements and design through
+              implementation, testing, and deployment, and the value of testing
+              early rather than treating it as a final step.
+            </p>
+          </div>
+        </div>
+        <div class="certificate-container">
+          <a
+            href="src/pictures/certificate_pic/CertificateOfCompletion_Software Architecture Patterns for Developers 2020.jpg"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/certificate_pic/CertificateOfCompletion_Software Architecture Patterns for Developers 2020.jpg"
+              alt="Software Architecture Patterns for Developers 2020"
+            />
+          </a>
+          <div class="cert-title-desc">
+            <h3>Software Architecture Patterns for Developers (2020)</h3>
+            <p>
+              Covered common software architecture patterns, including layered,
+              event-driven, microkernel, and microservices architectures, along
+              with the trade-offs of each and how to choose the right pattern
+              for a given system's requirements.
+            </p>
+          </div>
         </div>
       </div>
     </div>
