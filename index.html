@@ -189,7 +189,14 @@
         right: 0;
         bottom: 0;
         height: 30px;
-        background-color: #2660c1;
+        background: linear-gradient(
+          to bottom,
+          #3168d5 0%,
+          #4993e6 4%,
+          #2157d7 12%,
+          #2663e0 90%,
+          #1941a5 100%
+        );
         display: flex;
         align-items: center;
         padding: 0 4px 0 0;
@@ -271,24 +278,110 @@
       }
 
       #startbtn {
-        background: linear-gradient(to bottom, #5fb75f, #3c8f3c);
-        color: white;
-        border: none;
-        padding: 8px 20px;
-        border-top-right-radius: 12px;
-        border-bottom-right-radius: 12px;
-        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
         height: 100%;
+        padding: 0 22px 0 10px;
+        border: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: linear-gradient(
+          to bottom,
+          #3c9b3c 0%,
+          #5bc25b 10%,
+          #3ea43e 50%,
+          #2f8a2f 90%,
+          #1f6b1f 100%
+        );
+        box-shadow:
+          inset 2px 2px 3px rgba(255, 255, 255, 0.35),
+          inset -2px 0 4px rgba(0, 0, 0, 0.4);
+        color: white;
+        font-family:
+          "Franklin Gothic Medium", "Trebuchet MS", Tahoma, sans-serif;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+      }
+
+      #startbtn:hover {
+        filter: brightness(1.1);
+      }
+
+      #startbtn:active {
+        filter: brightness(0.9);
+      }
+
+      #startbtn img {
+        width: 20px;
+        height: 20px;
       }
 
       #startmenu {
         position: fixed;
         left: 0;
-        bottom: 34px;
+        bottom: 30px;
         background-color: #f0f0f0;
         border: 2px solid #0058e6;
         flex-direction: column;
-        min-width: 180px;
+        min-width: 375px;
+        min-height: 470px;
+        border-radius: 10px;
+      }
+
+      #user-profile {
+        border-top-right-radius: 9px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          to bottom,
+          #447fd6 0%,
+          #5796e1 1%,
+          #0d60cb 5%,
+          #3787e7 70%,
+          #3e8ae8 90%
+        );
+        background-color: #0058e6;
+        border-bottom: black;
+        height: 75px;
+        gap: 5px;
+      }
+
+      #profile-divider::after {
+        content: "";
+        height: 5px;
+        width: auto;
+        display: block;
+        background: linear-gradient(
+          to left,
+          #3666a5 0%,
+          #94858a 25%,
+          #d9884b 50%,
+          #94858a 75%,
+          #3666a5 100%
+        );
+      }
+
+      #user-profile img {
+        box-shadow:
+          2px 2px 3px #2b71c7,
+          -2px 0 4px rgba(0, 0, 0, 0.4);
+        height: 65px;
+        width: 65px;
+        border: white 1px solid;
+        margin: 5px;
+        border-radius: 5px;
+      }
+
+      #profile-name {
+        color: white;
+        font-family: Tahoma, sans-serif;
+        font-size: 18px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
       }
 
       .icon {
@@ -322,10 +415,6 @@
         color: black;
       }
 
-      #win-aboutme {
-        height: 340px;
-      }
-
       #win-downloadcomplete .win-body {
         display: flex;
         flex-direction: column;
@@ -343,6 +432,10 @@
       #win-downloadcomplete {
         height: 200px;
         width: 350px;
+      }
+
+      #win-aboutme {
+        height: 340px;
       }
 
       .about-header {
@@ -394,6 +487,10 @@
         text-decoration: none;
         cursor: pointer;
         border: none;
+      }
+
+      #win-hobbies {
+        height: auto;
       }
 
       #jesse-favourite {
@@ -537,7 +634,13 @@
       </div>
     </div>
     <div id="taskbar">
-      <button id="startbtn">Start</button>
+      <button id="startbtn">
+        <img
+          src="src/pictures/desktop_icons/start-button-logo.png"
+          alt="start logo"
+        />
+        Start
+      </button>
     </div>
     <div class="win" id="win-aboutme">
       <div class="titlebar">
@@ -1076,7 +1179,21 @@
       </div>
     </div>
     <div id="startmenu" style="display: none">
-      <button class="icon" data-win="mycomputer">My Computer</button>
+      <div id="user-profile">
+        <img
+          src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+          alt="profile-pictures"
+        />
+        <span id="profile-name">Jesse Proulx</span>
+      </div>
+      <span id="profile-divider"></span>
+      <button class="icon" data-win="win-aboutme">
+        <img
+          src="src/pictures/desktop_icons/My Computer.png"
+          alt="about me icon"
+        />
+        About Me
+      </button>
     </div>
     <div class="win" id="win-downloadcomplete" style="display: none">
       <div class="titlebar">
