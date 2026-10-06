@@ -1249,35 +1249,35 @@
       <span id="profile-divider"></span>
       <div id="start-menu-content">
         <div class="start-menu-column">
-          <button class="start-menu-icon" data-win="win-aboutme">
+          <button class="start-menu-icon" data-win="aboutme">
             <img
               src="src/pictures/desktop_icons/My Computer.png"
               alt="about me icon"
             />
             <span>About Me</span>
           </button>
-          <button class="start-menu-icon" data-win="win-resume">
+          <button class="start-menu-icon" data-win="resume">
             <img
               src="src/pictures/desktop_icons/My Documents.png"
               alt="resume icon"
             />
             <span>Résumé</span>
           </button>
-          <button class="start-menu-icon" data-win="win-hobbies">
+          <button class="start-menu-icon" data-win="hobbies">
             <img
               src="src/pictures/desktop_icons/Recycle Bin (empty).png"
               alt="hobbies icon"
             />
             <span>Hobbies</span>
           </button>
-          <button class="start-menu-icon" data-win="win-projects">
+          <button class="start-menu-icon" data-win="projects">
             <img
               src="src/pictures/desktop_icons/Internet Explorer 6.png"
               alt="projects icon"
             />
             <span>Projects</span>
           </button>
-          <button class="start-menu-icon" data-win="win-certificate">
+          <button class="start-menu-icon" data-win="certificate">
             <img
               src="src/pictures/desktop_icons/Minesweeper.png"
               alt="certificate icon"
@@ -1399,30 +1399,50 @@
         }, 5000);
       });
 
+      function openWindow(icon) {
+        const target = icon.dataset.win;
+        const win = document.getElementById("win-" + target);
+        if (!win) return;
+        win.style.display = "flex";
+
+        if (win.taskbarButton) {
+          win.taskbarButton.classList.add("active");
+          return;
+        }
+        const newButton = document.createElement("button");
+        const iconImg = icon.querySelector("img");
+        const taskBarIcon = document.createElement("img");
+        taskBarIcon.src = iconImg.src;
+        newButton.classList.add("taskbar-btn");
+        newButton.classList.add("active");
+        win.taskbarButton = newButton;
+        newButton.textContent = icon.textContent;
+        newButton.prepend(taskBarIcon);
+        taskbar.append(newButton);
+        newButton.addEventListener("click", () => {
+          if (win.style.display === "none") {
+            win.style.display = "flex";
+            newButton.classList.add("active");
+          } else {
+            win.style.display = "none";
+            newButton.classList.remove("active");
+          }
+        });
+      }
+
       icons.forEach(function (icon) {
         icon.addEventListener("click", () => {
-          const target = icon.dataset.win;
-          const win = document.getElementById("win-" + target);
-          win.style.display = "flex";
-          const newButton = document.createElement("button");
-          const iconImg = icon.querySelector("img");
-          const taskBarIcon = document.createElement("img");
-          taskBarIcon.src = iconImg.src;
-          newButton.classList.add("taskbar-btn");
-          newButton.classList.add("active");
-          win.taskbarButton = newButton;
-          newButton.textContent = icon.textContent;
-          newButton.prepend(taskBarIcon);
-          taskbar.append(newButton);
-          newButton.addEventListener("click", () => {
-            if (win.style.display === "none") {
-              win.style.display = "flex";
-              newButton.classList.add("active");
-            } else {
-              win.style.display = "none";
-              newButton.classList.remove("active");
-            }
-          });
+          openWindow(icon);
+        });
+      });
+
+      const startItems = document.querySelectorAll(
+        ".start-menu-icon[data-win]",
+      );
+      startItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          openWindow(item);
+          startmenu.style.display = "none";
         });
       });
 
