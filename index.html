@@ -332,6 +332,44 @@
         border-radius: 10px;
       }
 
+      .start-menu-column {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .start-menu-icon {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-family: Tahoma, sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        border-style: none;
+        padding: 5px 10px;
+      }
+
+      .start-menu-icon:hover {
+        background-color: #3b82f6;
+        color: #ffffff;
+      }
+
+      .start-menu-icon img {
+        width: 35px;
+        height: auto;
+      }
+
+      .start-menu-icon a {
+        display: flex;
+        text-align: center;
+        width: 50%;
+      }
+
+      a.start-menu-icon {
+        text-decoration: none;
+        color: black;
+      }
+
       #user-profile {
         border-top-right-radius: 9px;
         display: flex;
@@ -1187,13 +1225,70 @@
         <span id="profile-name">Jesse Proulx</span>
       </div>
       <span id="profile-divider"></span>
-      <button class="icon" data-win="win-aboutme">
-        <img
-          src="src/pictures/desktop_icons/My Computer.png"
-          alt="about me icon"
-        />
-        About Me
-      </button>
+      <div class="start-menu-column">
+        <button class="start-menu-icon" data-win="win-aboutme">
+          <img
+            src="src/pictures/desktop_icons/My Computer.png"
+            alt="about me icon"
+          />
+          <span>About Me</span>
+        </button>
+        <button class="start-menu-icon" data-win="win-resume">
+          <img
+            src="src/pictures/desktop_icons/My Documents.png"
+            alt="resume icon"
+          />
+          <span>Résumé</span>
+        </button>
+        <button class="start-menu-icon" data-win="win-hobbies">
+          <img
+            src="src/pictures/desktop_icons/Recycle Bin (empty).png"
+            alt="hobbies icon"
+          />
+          <span>Hobbies</span>
+        </button>
+        <button class="start-menu-icon" data-win="win-projects">
+          <img
+            src="src/pictures/desktop_icons/Internet Explorer 6.png"
+            alt="projects icon"
+          />
+          <span>Projects</span>
+        </button>
+        <button class="start-menu-icon" data-win="win-certificate">
+          <img
+            src="src/pictures/desktop_icons/Minesweeper.png"
+            alt="certificate icon"
+          />
+          <span>Certificates</span>
+        </button>
+        <a
+          class="start-menu-icon"
+          href="https://github.com/prou0212"
+          target="_blank"
+        >
+          <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
+          <span>GitHub</span>
+        </a>
+        <a
+          class="start-menu-icon"
+          href="https://www.linkedin.com/in/jesse-proulx-09572132a/"
+          target="_blank"
+        >
+          <img
+            src="src/pictures/desktop_icons/linkedin.png"
+            alt="linkedin icon"
+          />
+          <span>Linkedin</span>
+        </a>
+        <a
+          class="start-menu-icon"
+          href="mailto:jtaproulx1@hotmail.com"
+          target="_blank"
+        >
+          <img src="src/pictures/desktop_icons/Email.png" alt="Email icon" />
+          <span>Email Me</span>
+        </a>
+      </div>
     </div>
     <div class="win" id="win-downloadcomplete" style="display: none">
       <div class="titlebar">
