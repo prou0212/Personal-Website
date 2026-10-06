@@ -332,6 +332,23 @@
         border-radius: 10px;
       }
 
+      #botton-start-menu {
+        height: 30px;
+        min-width: 375px;
+        background: linear-gradient(
+          to bottom,
+          #3886e4 25%,
+          #2274de 50%,
+          #1468d5 75%,
+          #0f61cb 100%
+        );
+      }
+
+      #start-menu-content {
+        display: flex;
+        flex-direction: row;
+      }
+
       .start-menu-column {
         display: flex;
         flex-direction: column;
@@ -420,6 +437,11 @@
         font-size: 18px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
         cursor: pointer;
+      }
+
+      .mycomputer-column,
+      .mycomputer-column button {
+        background-color: #bfdbfe;
       }
 
       .icon {
@@ -1225,71 +1247,108 @@
         <span id="profile-name">Jesse Proulx</span>
       </div>
       <span id="profile-divider"></span>
-      <div class="start-menu-column">
-        <button class="start-menu-icon" data-win="win-aboutme">
-          <img
-            src="src/pictures/desktop_icons/My Computer.png"
-            alt="about me icon"
-          />
-          <span>About Me</span>
-        </button>
-        <button class="start-menu-icon" data-win="win-resume">
-          <img
-            src="src/pictures/desktop_icons/My Documents.png"
-            alt="resume icon"
-          />
-          <span>Résumé</span>
-        </button>
-        <button class="start-menu-icon" data-win="win-hobbies">
-          <img
-            src="src/pictures/desktop_icons/Recycle Bin (empty).png"
-            alt="hobbies icon"
-          />
-          <span>Hobbies</span>
-        </button>
-        <button class="start-menu-icon" data-win="win-projects">
-          <img
-            src="src/pictures/desktop_icons/Internet Explorer 6.png"
-            alt="projects icon"
-          />
-          <span>Projects</span>
-        </button>
-        <button class="start-menu-icon" data-win="win-certificate">
-          <img
-            src="src/pictures/desktop_icons/Minesweeper.png"
-            alt="certificate icon"
-          />
-          <span>Certificates</span>
-        </button>
-        <a
-          class="start-menu-icon"
-          href="https://github.com/prou0212"
-          target="_blank"
-        >
-          <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
-          <span>GitHub</span>
-        </a>
-        <a
-          class="start-menu-icon"
-          href="https://www.linkedin.com/in/jesse-proulx-09572132a/"
-          target="_blank"
-        >
-          <img
-            src="src/pictures/desktop_icons/linkedin.png"
-            alt="linkedin icon"
-          />
-          <span>Linkedin</span>
-        </a>
-        <a
-          class="start-menu-icon"
-          href="mailto:jtaproulx1@hotmail.com"
-          target="_blank"
-        >
-          <img src="src/pictures/desktop_icons/Email.png" alt="Email icon" />
-          <span>Email Me</span>
-        </a>
+      <div id="start-menu-content">
+        <div class="start-menu-column">
+          <button class="start-menu-icon" data-win="win-aboutme">
+            <img
+              src="src/pictures/desktop_icons/My Computer.png"
+              alt="about me icon"
+            />
+            <span>About Me</span>
+          </button>
+          <button class="start-menu-icon" data-win="win-resume">
+            <img
+              src="src/pictures/desktop_icons/My Documents.png"
+              alt="resume icon"
+            />
+            <span>Résumé</span>
+          </button>
+          <button class="start-menu-icon" data-win="win-hobbies">
+            <img
+              src="src/pictures/desktop_icons/Recycle Bin (empty).png"
+              alt="hobbies icon"
+            />
+            <span>Hobbies</span>
+          </button>
+          <button class="start-menu-icon" data-win="win-projects">
+            <img
+              src="src/pictures/desktop_icons/Internet Explorer 6.png"
+              alt="projects icon"
+            />
+            <span>Projects</span>
+          </button>
+          <button class="start-menu-icon" data-win="win-certificate">
+            <img
+              src="src/pictures/desktop_icons/Minesweeper.png"
+              alt="certificate icon"
+            />
+            <span>Certificates</span>
+          </button>
+          <a
+            class="start-menu-icon"
+            href="https://github.com/prou0212"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/desktop_icons/github.png"
+              alt="github icon"
+            />
+            <span>GitHub</span>
+          </a>
+          <a
+            class="start-menu-icon"
+            href="https://www.linkedin.com/in/jesse-proulx-09572132a/"
+            target="_blank"
+          >
+            <img
+              src="src/pictures/desktop_icons/linkedin.png"
+              alt="linkedin icon"
+            />
+            <span>Linkedin</span>
+          </a>
+          <a
+            class="start-menu-icon"
+            href="mailto:jtaproulx1@hotmail.com"
+            target="_blank"
+          >
+            <img src="src/pictures/desktop_icons/Email.png" alt="Email icon" />
+            <span>Email Me</span>
+          </a>
+        </div>
+        <div class="start-menu-column mycomputer-column">
+          <button class="start-menu-icon">
+            <img
+              src="src/pictures/my_documents_icons/My Pictures.png"
+              alt="pictures icon"
+            />
+            <span>My Pictures</span>
+          </button>
+          <button class="start-menu-icon">
+            <img
+              src="src/pictures/my_documents_icons/My Music.png"
+              alt="music icon"
+            />
+            <span>My Music</span>
+          </button>
+          <button class="start-menu-icon">
+            <img
+              src="src/pictures/my_documents_icons/My Videos.png"
+              alt="videos icon"
+            />
+            <span>My Videos</span>
+          </button>
+          <button class="start-menu-icon">
+            <img
+              src="src/pictures/my_documents_icons/Command Prompt.png"
+              alt="command prompt icon"
+            />
+            <span>Command Prompt</span>
+          </button>
+        </div>
       </div>
+      <div id="botton-start-menu"></div>
     </div>
+
     <div class="win" id="win-downloadcomplete" style="display: none">
       <div class="titlebar">
         Download in Progress<button class="close">×</button>
