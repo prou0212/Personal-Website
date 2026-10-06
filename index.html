@@ -160,7 +160,8 @@
       #desktop {
         inset: 0;
         position: fixed;
-        display: none;
+        /* display: none; */
+        display: block;
         background: linear-gradient(
           to bottom,
           #4a90d9 0%,
@@ -606,10 +607,21 @@
       .cert-title-desc p {
         margin: 0;
       }
+
+      .my-pictures-container,
+      .my-music-container,
+      .my-videos-container {
+        margin: 0;
+        padding: 0;
+      }
+
+      .toolbar {
+        background-color: #ece9d8;
+      }
     </style>
   </head>
   <body>
-    <div id="poweron">
+    <!-- <div id="poweron">
       <div id="intro">
         <img
           src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
@@ -640,7 +652,7 @@
         src="src/pictures/bootup_icons/microsoft_logo.png"
         alt="official microsoft logo"
       />
-    </div>
+    </div> -->
     <div id="desktop">
       <div id="desktop-icons">
         <div class="icon" data-win="aboutme">
@@ -1238,6 +1250,56 @@
         </div>
       </div>
     </div>
+    <div class="win" id="win-pictures">
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/my_documents_icons/My Pictures.png"
+          alt="pictures icon"
+        />My Pictures<button class="close">×</button>
+      </div>
+      <div class="win-body my-pictures-container">
+        <div class="toolbar">
+          <button>File</button>
+          <button>View</button>
+          <button>Favorites</button>
+          <button>Tools</button>
+          <button>Help</button>
+        </div>
+      </div>
+    </div>
+    <div class="win" id="win-music">
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/my_documents_icons/My Music.png"
+          alt="music icon"
+        />My Music<button class="close">×</button>
+      </div>
+      <div class="win-body my-music-container"></div>
+    </div>
+    <div class="win" id="win-video">
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/my_documents_icons/My Videos.png"
+          alt="video icon"
+        />My Videos<button class="close">×</button>
+      </div>
+      <div class="win-body my-videos-container">
+        <span>Testing</span>
+      </div>
+    </div>
+    <div class="win" id="win-command">
+      <div class="titlebar">
+        <img
+          class="titlebar-icon"
+          src="src/pictures/my_documents_icons/Command Prompt.png"
+          alt="command prompt icon"
+        />Command Prompt<button class="close">×</button>
+      </div>
+      <div class="win-body"></div>
+    </div>
     <div id="startmenu" style="display: none">
       <div id="user-profile">
         <img
@@ -1316,28 +1378,28 @@
           </a>
         </div>
         <div class="start-menu-column mycomputer-column">
-          <button class="start-menu-icon">
+          <button class="start-menu-icon" data-win="pictures">
             <img
               src="src/pictures/my_documents_icons/My Pictures.png"
               alt="pictures icon"
             />
             <span>My Pictures</span>
           </button>
-          <button class="start-menu-icon">
+          <button class="start-menu-icon" data-win="music">
             <img
               src="src/pictures/my_documents_icons/My Music.png"
               alt="music icon"
             />
             <span>My Music</span>
           </button>
-          <button class="start-menu-icon">
+          <button class="start-menu-icon" data-win="video">
             <img
               src="src/pictures/my_documents_icons/My Videos.png"
               alt="videos icon"
             />
             <span>My Videos</span>
           </button>
-          <button class="start-menu-icon">
+          <button class="start-menu-icon" data-win="command">
             <img
               src="src/pictures/my_documents_icons/Command Prompt.png"
               alt="command prompt icon"
@@ -1373,31 +1435,31 @@
       const downloadWin = document.getElementById("win-downloadcomplete");
       const confirmbtn = document.getElementById("confirm-btn");
 
-      taskbar.style.display = "none";
+      // taskbar.style.display = "none";
 
       //Clicking Power Button on Home Screen
-      powerbutton.addEventListener("click", () => {
-        poweron.style.display = "none";
-        bootscreen.style.display = "flex";
+      // powerbutton.addEventListener("click", () => {
+      //   poweron.style.display = "none";
+      //   bootscreen.style.display = "flex";
 
-        //Timer for Loading Screen
-        setTimeout(() => {
-          bootscreen.style.display = "none";
-          desktop.style.display = "block";
-          taskbar.style.display = "flex";
+      //   //Timer for Loading Screen
+      //   setTimeout(() => {
+      //     bootscreen.style.display = "none";
+      //     desktop.style.display = "block";
+      //     taskbar.style.display = "flex";
 
-          const chime = new Audio("src/audio/startup.mp3");
-          chime.volume = 1;
-          async function boot() {
-            try {
-              await chime.play();
-            } catch (error) {
-              console.log("Error: Audio cannot be played", error);
-            }
-          }
-          boot();
-        }, 5000);
-      });
+      //     const chime = new Audio("src/audio/startup.mp3");
+      //     chime.volume = 1;
+      //     async function boot() {
+      //       try {
+      //         await chime.play();
+      //       } catch (error) {
+      //         console.log("Error: Audio cannot be played", error);
+      //       }
+      //     }
+      //     boot();
+      //   }, 5000);
+      // });
 
       function openWindow(icon) {
         const target = icon.dataset.win;
