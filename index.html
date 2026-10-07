@@ -11,7 +11,11 @@
       rel="stylesheet"
     />
 
-    <!-- <link rel="icon" type="image/png" href="pictures/icon/hammer.png?v=2" /> -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="src/pictures/desktop_icons/start-button-logo.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       .lexend-zetta {
@@ -227,7 +231,7 @@
         background-color: #3c81f3;
       }
 
-      .taskbaar-btn.active:hover {
+      .taskbar-btn.active:hover {
         background-color: #4ba1ff;
       }
 
@@ -263,6 +267,8 @@
       }
 
       .titlebar {
+        font-family: Tahoma, sans-serif;
+        font-size: 14px;
         background: linear-gradient(to right, #0058e6, #3f9dff);
         color: white;
         border-top-left-radius: 6px;
@@ -367,7 +373,8 @@
         padding: 5px 10px;
       }
 
-      .start-menu-icon:hover {
+      .start-menu-icon:hover,
+      .toolbar button:hover {
         background-color: #3b82f6;
         color: #ffffff;
       }
@@ -616,7 +623,133 @@
       }
 
       .toolbar {
+        display: flex;
+        gap: 5px;
         background-color: #ece9d8;
+        padding: 0 2px;
+        height: 25px;
+        border-bottom: #d6d3d1 solid 1px;
+      }
+
+      .toolbar button,
+      .toolbar-options button {
+        border-style: none;
+        background-color: #ece9d8;
+      }
+
+      .toolbar-options {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 50px;
+        padding: 0 4px;
+        background-color: #ece9d8;
+        border-bottom: #d6d3d1 solid 1px;
+      }
+
+      .toolbar-search {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 30px;
+        padding: 0 4px;
+        background-color: #ece9d8;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+      }
+
+      .back-button,
+      .forward-button,
+      .up-directory-button,
+      .search-button,
+      .folder-button,
+      .folder-view-button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .back-button {
+        padding: 0 15px 0 10px;
+      }
+
+      .forward-button {
+        padding: 0 20px 0 5px;
+      }
+
+      .up-directory-button,
+      .folder-view-button {
+        padding: 3px;
+      }
+
+      .toolbar-options button:hover {
+        background-color: #f8f5e3;
+        color: #000000;
+      }
+
+      .toolbar-icons {
+        width: 30px;
+        height: 30px;
+      }
+
+      .toolbar-search {
+        display: flex;
+        align-items: center; /* fixes the label/icon sitting too high */
+        gap: 6px;
+        padding: 2px 4px;
+        background: #ece9d8;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #c5c2b2;
+      }
+
+      .search-label {
+        font-size: 12px;
+        color: #555;
+        padding: 0 4px;
+      }
+
+      .search-bar {
+        flex: 1; /* stretches across like the real one */
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 22px;
+        padding: 0 4px;
+        background: #fff;
+        border: 1px solid #7f9db9;
+      }
+
+      .search-bar-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .search-bar input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 12px;
+        color: #000;
+        cursor: default;
+      }
+
+      .search-go {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      .search-go img {
+        width: 20px;
+        height: 20px;
       }
     </style>
   </head>
@@ -685,7 +818,7 @@
           <span>Certificates</span>
         </div>
         <a class="icon" href="https://github.com/prou0212" target="_blank">
-          <img src="src/pictures/desktop_icons/github.png" alt="github icon" />
+          <img src="src/pictures/desktop_icons/github1.png" alt="github icon" />
           <span>GitHub</span>
         </a>
         <a
@@ -694,7 +827,7 @@
           target="_blank"
         >
           <img
-            src="src/pictures/desktop_icons/linkedin.png"
+            src="src/pictures/desktop_icons/linkedin1.png"
             alt="Linkedin icon"
           />
           <span>Linkedin</span>
@@ -1265,6 +1398,72 @@
           <button>Favorites</button>
           <button>Tools</button>
           <button>Help</button>
+        </div>
+        <div class="toolbar-options">
+          <button class="back-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Back.png"
+              alt="back-icon"
+            />
+            <span>Back</span>
+          </button>
+          <button class="forward-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Forward.png"
+              alt="forward-icon"
+            />
+          </button>
+          <button class="up-directory-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Up.png"
+              alt="Up Directory"
+            />
+          </button>
+          <button class="search-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Search.png"
+              alt="search-icon"
+            />
+            <span>Search</span>
+          </button>
+          <button class="folder-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Folder View.png"
+              alt="search-icon"
+            />
+            <span>Folders</span>
+          </button>
+          <button class="folder-view-button">
+            <img
+              class="toolbar-icons"
+              src="src/pictures/my_documents_icons/Folder View - Classic.png"
+              alt="folder-view-icon"
+            />
+          </button>
+        </div>
+        <div class="toolbar-search">
+          <span class="search-label">Address</span>
+          <div class="search-bar">
+            <img
+              class="search-bar-icon"
+              src="src/pictures/my_documents_icons/My Pictures.png"
+              alt=""
+            />
+            <input
+              type="text"
+              name="search-bar-field"
+              value="C:\My Pictures"
+              readonly
+            />
+          </div>
+          <button class="search-go" aria-label="Go">
+            <img src="src/pictures/my_documents_icons/Go.png" alt="go icon" />
+          </button>
         </div>
       </div>
     </div>
