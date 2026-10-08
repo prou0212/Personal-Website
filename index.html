@@ -698,7 +698,7 @@
 
       .toolbar-search {
         display: flex;
-        align-items: center; /* fixes the label/icon sitting too high */
+        align-items: center;
         gap: 6px;
         padding: 2px 4px;
         background: #ece9d8;
@@ -713,7 +713,7 @@
       }
 
       .search-bar {
-        flex: 1; /* stretches across like the real one */
+        flex: 1;
         display: flex;
         align-items: center;
         gap: 6px;
@@ -750,6 +750,83 @@
       .search-go img {
         width: 20px;
         height: 20px;
+      }
+
+      .my-pictures-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .my-window-body {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+      }
+
+      .sidebar-window {
+        background: linear-gradient(
+          to bottom,
+          #889afc 0%,
+          #7083ea 50%,
+          #5468d4 100%
+        );
+        width: 230px;
+        flex-shrink: 0;
+        padding: 12px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .main-window-content {
+        flex: 1;
+        background: #fff;
+      }
+
+      .system-tasks,
+      .other-places,
+      .file-folder-tasks {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-title {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+        padding: 5px;
+        background-color: #2057e0;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .sidebar-body {
+        background: linear-gradient(to bottom, #eff0f8 0%, #d3d9fb 100%);
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .sidebar-icon {
+        height: 20px;
+        width: auto;
+      }
+
+      .sidebar-link {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .sidebar-link span {
+        font-size: 12px;
+        color: #0b6ed8;
       }
     </style>
   </head>
@@ -1464,6 +1541,108 @@
           <button class="search-go" aria-label="Go">
             <img src="src/pictures/my_documents_icons/Go.png" alt="go icon" />
           </button>
+        </div>
+        <div class="my-window-body">
+          <div class="sidebar-window">
+            <div class="system-tasks">
+              <div class="sidebar-title">
+                <span>System Tasks</span>
+              </div>
+              <div class="sidebar-body">
+                <div class="sidebar-link">
+                  <img
+                    class="sidebar-icon"
+                    src="src/pictures/my_documents_icons/Start Menu Programs Alt.png"
+                    alt="start menu programs icon"
+                  />
+                  <span>Hide the contents of this drive</span>
+                </div>
+                <div class="sidebar-link">
+                  <img
+                    class="sidebar-icon"
+                    src="src/pictures/my_documents_icons/Programs.png"
+                    alt="programs icon"
+                  />
+                  <span>Add or remove programs</span>
+                </div>
+                <div class="sidebar-link">
+                  <img
+                    class="sidebar-icon"
+                    src="src/pictures/my_documents_icons/Search.png"
+                    alt="search icon"
+                  />
+                  <span>Search for files or folders</span>
+                </div>
+              </div>
+            </div>
+            <div class="other-places">
+              <div class="system-tasks">
+                <div class="sidebar-title">
+                  <span>Other Places</span>
+                </div>
+                <div class="sidebar-body">
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/My Music.png"
+                      alt="music icon"
+                    />
+                    <span>My Music</span>
+                  </div>
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/My Pictures.png"
+                      alt="pictures icon"
+                    />
+                    <span>My Pictures</span>
+                  </div>
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/My Videos.png"
+                      alt="video icon"
+                    />
+                    <span>My Videos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="file-folder-tasks">
+              <div class="system-tasks">
+                <div class="sidebar-title">
+                  <span>File and Folder Tasks</span>
+                </div>
+                <div class="sidebar-body">
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/New Folder.png"
+                      alt="new folder icon"
+                    />
+                    <span>Make a new folder</span>
+                  </div>
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/Publish to web.png"
+                      alt="publish icon"
+                    />
+                    <span>Publish this folder to the Web</span>
+                  </div>
+                  <div class="sidebar-link">
+                    <img
+                      class="sidebar-icon"
+                      src="src/pictures/my_documents_icons/Shared Folder.png"
+                      alt="shared icon"
+                    />
+                    <span>Share this folder</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-window-content"></div>
         </div>
       </div>
     </div>
