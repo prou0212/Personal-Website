@@ -2519,6 +2519,7 @@
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
           win.style.display = "none";
+          win.taskbarButton.classList.remove("active");
         });
       });
 
