@@ -2515,6 +2515,13 @@
         }
       });
 
+      minimizeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const win = btn.closest(".win");
+          win.style.display = "none";
+        });
+      });
+
       closeButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
