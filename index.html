@@ -848,8 +848,14 @@
         object-fit: cover;
       }
 
+      .main-window-content .music-video-img img {
+        width: 50px;
+        height: 50px;
+      }
+
       .picture-icon,
-      .music-icon {
+      .music-icon,
+      .video-icon {
         display: flex;
         gap: 10px;
         align-items: center;
@@ -1951,15 +1957,17 @@
           <div class="main-window-content">
             <div class="music-icon">
               <a
-                href="src/pictures/my_documents_icons/rickAstley1.jpg"
+                href="src/pictures/my_documents_icons/Rick_Astley_Never_Gonna_Give_You_Up.mp3"
                 target="_blank"
               >
-                <img
-                  src="src/pictures/my_documents_icons/rickAstley1.jpg"
-                  alt="rickAstley1"
-                />
+                <div class="music-img">
+                  <img
+                    src="src/pictures/my_documents_icons/Windows Media Player 10.png"
+                    alt="music media player icon"
+                  />
+                </div>
               </a>
-              <span>Rick_Astley_1.jpeg</span>
+              <span>Rick Astley - Never Gonna Give You Up.mp3</span>
             </div>
           </div>
         </div>
@@ -2039,7 +2047,7 @@
             <input
               type="text"
               name="search-bar-field"
-              value="C:\My Music"
+              value="C:\My Videos"
               readonly
             />
           </div>
@@ -2148,17 +2156,19 @@
             </div>
           </div>
           <div class="main-window-content">
-            <div class="music-icon">
+            <div class="video-icon">
               <a
-                href="src/pictures/my_documents_icons/rickAstley1.jpg"
+                href="src/pictures/my_documents_icons/Rick_Astley_Never_Gonna_Give_You_Up.mp4"
                 target="_blank"
               >
-                <img
-                  src="src/pictures/my_documents_icons/rickAstley1.jpg"
-                  alt="rickAstley1"
-                />
+                <div class="music-video-img">
+                  <img
+                    src="src/pictures/my_documents_icons/Windows Media Player 10.png"
+                    alt="windows media player icon"
+                  />
+                </div>
               </a>
-              <span>Rick_Astley_1.jpeg</span>
+              <span>Rick Astley - Never Gonna Give You Up.mp4</span>
             </div>
           </div>
         </div>
