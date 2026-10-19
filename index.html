@@ -300,14 +300,25 @@
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
       }
 
+      .minimize,
+      .maximize,
       .close {
-        color: var(--color-text-light);
-        background-color: red;
-        font-size: 15px;
-        border-radius: var(--radius-sm);
-        border-color: var(--color-text-light);
-        border-style: solid;
+        background-color: transparent;
+        border-style: none;
         border-width: 1px;
+        padding: 0 3px;
+      }
+
+      .minimize img,
+      .maximize img,
+      .close img {
+        width: 20px;
+        height: auto;
+      }
+
+      .window-buttons {
+        display: flex;
+        align-self: flex-end;
         margin-left: auto;
       }
 
@@ -825,7 +836,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 10px;
       }
 
       .main-window-content {
@@ -864,7 +875,6 @@
       .system-tasks,
       .other-places,
       .file-folder-tasks {
-        height: 100px;
         display: flex;
         flex-direction: column;
       }
@@ -1005,7 +1015,18 @@
           class="titlebar-icon"
           src="src/pictures/desktop_icons/My Computer.png"
           alt="about me icon"
-        />About Me<button class="close">×</button>
+        />About Me
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <div class="about-header">
@@ -1037,7 +1058,18 @@
           class="titlebar-icon"
           src="src/pictures/desktop_icons/My Documents.png"
           alt="resume icon"
-        />Résumé<button class="close">×</button>
+        />Résumé
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <h2>Jesse Proulx</h2>
@@ -1158,7 +1190,18 @@
           class="titlebar-icon"
           src="src/pictures/desktop_icons/Recycle Bin (empty).png"
           alt="hobbies icon"
-        />Hobbies<button class="close">×</button>
+        />Hobbies
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <h2>Hobbies (Outside of Coding)</h2>
@@ -1210,7 +1253,17 @@
           alt="projects icon"
         />
         Projects
-        <button class="close">×</button>
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <h2>Professional Projects</h2>
@@ -1371,7 +1424,18 @@
           class="titlebar-icon"
           src="src/pictures/desktop_icons/Minesweeper.png"
           alt="certificate icon"
-        />Certificates<button class="close">×</button>
+        />Certificates
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <div class="certificate-container">
@@ -1541,7 +1605,18 @@
           class="titlebar-icon"
           src="src/pictures/my_documents_icons/My Pictures.png"
           alt="pictures icon"
-        />My Pictures<button class="close">×</button>
+        />My Pictures
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body my-pictures-container">
         <div class="toolbar">
@@ -1778,7 +1853,18 @@
           class="titlebar-icon"
           src="src/pictures/my_documents_icons/My Music.png"
           alt="music icon"
-        />My Music<button class="close">×</button>
+        />My Music
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body my-music-container">
         <div class="toolbar">
@@ -1960,7 +2046,7 @@
                 href="src/pictures/my_documents_icons/Rick_Astley_Never_Gonna_Give_You_Up.mp3"
                 target="_blank"
               >
-                <div class="music-img">
+                <div class="music-video-img">
                   <img
                     src="src/pictures/my_documents_icons/Windows Media Player 10.png"
                     alt="music media player icon"
@@ -1979,7 +2065,18 @@
           class="titlebar-icon"
           src="src/pictures/my_documents_icons/My Videos.png"
           alt="video icon"
-        />My Videos<button class="close">×</button>
+        />My Videos
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body my-videos-container">
         <div class="toolbar">
@@ -2180,7 +2277,18 @@
           class="titlebar-icon"
           src="src/pictures/my_documents_icons/Command Prompt.png"
           alt="command prompt icon"
-        />Command Prompt<button class="close">×</button>
+        />Command Prompt
+        <div class="window-buttons">
+          <button class="minimize">
+            <img src="src/pictures/window_pic/Minimize.png" alt="Minimize" />
+          </button>
+          <button class="maximize">
+            <img src="src/pictures/window_pic/Maximize.png" alt="Maximize" />
+          </button>
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body"></div>
     </div>
@@ -2297,7 +2405,12 @@
 
     <div class="win" id="win-downloadcomplete" style="display: none">
       <div class="titlebar">
-        Download in Progress<button class="close">×</button>
+        Download in Progress
+        <div class="window-buttons">
+          <button class="close">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
       </div>
       <div class="win-body">
         <h3>Currently Downloading</h3>
@@ -2313,6 +2426,8 @@
       const taskbar = document.getElementById("taskbar");
       const icons = document.querySelectorAll(".icon");
       const closeButtons = document.querySelectorAll(".close");
+      const minimizeButtons = document.querySelectorAll(".minimize");
+      const maximizeButtons = document.querySelectorAll(".maximize");
       const startbtn = document.getElementById("startbtn");
       const startmenu = document.getElementById("startmenu");
       const downloadbtn = document.querySelectorAll(".download-btn");
