@@ -2537,6 +2537,8 @@
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
           win.classList.toggle("maximize");
+          win.style.left = "";
+          win.style.top = "";
         });
       });
 
