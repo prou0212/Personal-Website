@@ -300,6 +300,15 @@
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
       }
 
+      .win.maximize {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: var(--taskbar-height);
+        width: auto;
+        height: auto;
+      }
+
       .minimize-btn,
       .maximize-btn,
       .close-btn {
@@ -547,18 +556,9 @@
         flex: 1;
       }
 
-      #win-projects {
-        width: 600px;
-        height: 500px;
-      }
-
       #win-downloadcomplete {
         height: 200px;
         width: 350px;
-      }
-
-      #win-aboutme {
-        height: 340px;
       }
 
       .about-header {
@@ -843,7 +843,7 @@
         flex: 1;
         background: var(--color-window-bg);
         display: flex;
-        gap: 10px;
+        gap: 10px 30px;
         padding: 20px;
         font-family: var(--font-system);
         font-size: var(--text-xs);
@@ -2053,7 +2053,7 @@
           <div class="main-window-content">
             <div class="music-icon">
               <a
-                href="src/pictures/my_documents_icons/Rick_Astley_Never_Gonna_Give_You_Up.mp3"
+                href="src/pictures/my_documents_icons/rick_astley_content/Rick_Astley_Never_Gonna_Give_You_Up.mp3"
                 target="_blank"
               >
                 <div class="music-video-img">
@@ -2063,7 +2063,7 @@
                   />
                 </div>
               </a>
-              <span>Rick Astley - Never Gonna Give You Up.mp3</span>
+              <span>DO NOT CLICK.mp3</span>
             </div>
           </div>
         </div>
@@ -2265,7 +2265,7 @@
           <div class="main-window-content">
             <div class="video-icon">
               <a
-                href="src/pictures/my_documents_icons/Rick_Astley_Never_Gonna_Give_You_Up.mp4"
+                href="src/pictures/my_documents_icons/rick_astley_content/Rick_Astley_Never_Gonna_Give_You_Up.mp4"
                 target="_blank"
               >
                 <div class="music-video-img">
@@ -2275,7 +2275,7 @@
                   />
                 </div>
               </a>
-              <span>Rick Astley - Never Gonna Give You Up.mp4</span>
+              <span>DO NOT CLICK.mp4</span>
             </div>
           </div>
         </div>
