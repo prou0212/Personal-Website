@@ -641,8 +641,14 @@
         padding: 5px 15px;
       }
 
+      .win.maximize .certificate-container {
+        display: flex;
+        flex-direction: row;
+      }
+
       .certificate-container {
         display: flex;
+        flex-direction: column;
       }
 
       .certificate-container a {
@@ -3545,6 +3551,7 @@
           win.style.display = "none";
           if (win.taskbarButton !== undefined) {
             win.taskbarButton.remove();
+            win.taskbarButton = undefined;
           }
         });
       });
