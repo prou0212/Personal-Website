@@ -3542,6 +3542,12 @@
           win.classList.toggle("maximize");
           win.style.left = "";
           win.style.top = "";
+          const restoreButtons = btn.querySelector("img");
+          if (win.classList.contains("maximize")) {
+            restoreButtons.src = "src/pictures/window_pic/Restore.png";
+          } else {
+            restoreButtons.src = "src/pictures/window_pic/Maximize.png";
+          }
         });
       });
 
