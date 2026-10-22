@@ -3305,6 +3305,7 @@
       </div>
       <div class="win-body">
         <div id="command-text"></div>
+        <span>C:\</span>
         <input id="command-input" type="text" />
       </div>
     </div>
@@ -3449,8 +3450,6 @@
       const downloadbtn = document.querySelectorAll(".download-btn");
       const downloadWin = document.getElementById("win-downloadcomplete");
       const confirmbtn = document.getElementById("confirm-btn");
-      const commandText = document.getElementById("command-text");
-      const commandInput = document.getElementById("command-input");
 
       // taskbar.style.display = "none";
 
@@ -3610,67 +3609,88 @@
         downloadWin.style.display = "none";
       });
 
-      switch (UserInput) {
-        case "help":
-          textContent = "help";
-          textContent = "rickroll";
-          textContent = "giveup";
-          textContent = "hack";
-          textContent = "shutdown";
-          textContent = "clippy";
-          textContent = "vinyl";
-          textContent = "sudo hire jesse";
-          textContent = "ffvii";
-          textContent = "fortune";
-          break;
-        case "rickroll":
-          //opens your Rick Astley video
-          break;
-        case "giveup":
-          textContent =
-            "Never gonna give, never gonna give............... Give you up";
-          break;
-        case "hack":
-          textContent = "Accessing mainframe… 12%… 67%… ACCESS DENIED";
-          break;
-        case "shutdown":
-          textContent =
-            'When you can "shutdown" a bowser. Let me know, I want to know!!!!';
-          break;
-        case "clippy":
-          textContent =
-            "It looks like you are trying to hire a developer. Would you like help?";
-          textContent = "613-276-1584 or jtaproulx1@hotmail.com";
-          break;
-        case "vinyl":
-          //Prints random 50 records from my collection (I own alot so we will do my favs)
-          break;
-        case "sudo hire jesse":
-          textContent = "";
-          break;
-        case "ffvii":
-          //Reuse this logic from the start up sound
-          const chime = new Audio("src/audio/startup.mp3");
-          chime.volume = 1;
-          async function boot() {
-            try {
-              await chime.play();
-            } catch (error) {
-              console.log("Error: Audio cannot be played", error);
-            }
+      const commandText = document.getElementById("command-text");
+      const commandInput = document.getElementById("command-input");
+
+      printHelper("Microsoft Windows XP [Version 5.1.2600]");
+      printHelper("<C> Copyright 1985-2001 Microsoft Corp.");
+      printHelper("");
+      commandInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          const command = commandInput.value.trim(" ").toLowerCase();
+          console.log(command);
+          printHelper("C:\\> " + command);
+          commandInput.value = "";
+          switch (command) {
+            case "help":
+              printHelper("douchebag");
+              // textContent = "help";
+              // textContent = "rickroll";
+              // textContent = "giveup";
+              // textContent = "hack";
+              // textContent = "shutdown";
+              // textContent = "clippy";
+              // textContent = "vinyl";
+              // textContent = "sudo hire jesse";
+              // textContent = "ffvii";
+              // textContent = "fortune";
+              break;
+            case "rickroll":
+              //opens your Rick Astley video
+              break;
+            case "giveup":
+              textContent =
+                "Never gonna give, never gonna give............... Give you up";
+              break;
+            case "hack":
+              textContent = "Accessing mainframe… 12%… 67%… ACCESS DENIED";
+              break;
+            case "shutdown":
+              textContent =
+                'When you can "shutdown" a bowser. Let me know, I want to know!!!!';
+              break;
+            case "clippy":
+              textContent =
+                "It looks like you are trying to hire a developer. Would you like help?";
+              textContent = "613-276-1584 or jtaproulx1@hotmail.com";
+              break;
+            case "vinyl":
+              //Prints random 50 records from my collection (I own alot so we will do my favs)
+              break;
+            case "sudo hire jesse":
+              textContent = "";
+              break;
+            case "ffvii":
+              //Reuse this logic from the start up sound
+              const chime = new Audio("src/audio/startup.mp3");
+              chime.volume = 1;
+              async function boot() {
+                try {
+                  await chime.play();
+                } catch (error) {
+                  console.log("Error: Audio cannot be played", error);
+                }
+              }
+              boot();
+              textContent =
+                "Jesse has joined your party! HP: 9999 MP: 9999 / Limits: HTML, CSS, JS.";
+              break;
+            case "fortune":
+              //random function with random textContents then display
+              break;
+            default:
+              textContent =
+                //Command entered from the user + text
+                commandEntered +
+                "is not recognized as an internal or external command...";
           }
-          boot();
-          textContent =
-            "Jesse has joined your party! HP: 9999 MP: 9999 / Limits: HTML, CSS, JS.";
-          break;
-        case "fortune":
-          //random function with random textContents then display
-          break;
-        default:
-          textContent =
-            //Command entered from the user + text
-            commandEntered +
-            "is not recognized as an internal or external command...";
+        }
+      });
+
+      function printHelper(text) {
+        const printDiv = document.createElement("div");
+        printDiv.textContent = text;
+        commandText.append(printDiv);
       }
     </script>
   </body>
