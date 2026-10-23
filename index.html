@@ -40,6 +40,7 @@
         --font-serif: "IBM Plex Serif", serif;
         --font-franklin:
           "Franklin Gothic Medium", "Trebuchet MS", Tahoma, sans-serif;
+        --font-courier: "Courier New", monospace;
 
         /* Font Sizes */
         --text-xs: 12px;
@@ -472,7 +473,7 @@
           #3e8ae8 90%
         );
         background-color: var(--color-xp-blue);
-        border-bottom: black;
+        border-bottom: var(--color-bg-dark);
         height: 75px;
         gap: 5px;
       }
@@ -535,7 +536,7 @@
       .icon span {
         color: var(--color-text-light);
         font-size: var(--text-xs);
-        text-shadow: 1px 1px 2px black;
+        text-shadow: 1px 1px 2px var(--color-bg-dark);
         margin-top: 4px;
       }
 
@@ -925,7 +926,7 @@
       }
 
       #win-command {
-        background-color: black;
+        background-color: var(--color-bg-dark);
       }
 
       #command-text {
@@ -933,18 +934,18 @@
       }
 
       #command-window {
-        font-family: "Courier New", monospace;
-        background-color: black;
+        font-family: var(--font-courier);
+        background-color: var(--color-bg-dark);
         color: var(--color-window-bg);
         flex: 1;
       }
 
       #command-input {
-        background-color: black;
+        background-color: var(--color-bg-dark);
         outline: none;
         border-style: none;
         color: var(--color-window-bg);
-        font-family: "Courier New", monospace;
+        font-family: var(--font-courier);
         font-size: 16px;
       }
 
@@ -3769,6 +3770,8 @@
               boot();
               break;
             case "fortune":
+              const displayJoke = generateRandomJokes(jokes);
+              printHelper(displayJoke);
               break;
             default:
               printHelper(
@@ -3798,6 +3801,43 @@
 
       function printHelp(name, description) {
         printHelper(name.padEnd(17) + description, "help-text");
+      }
+
+      const jokes = [
+        "There are 10 types of people in the world: those who understand binary and those who don’t.",
+        "Why do programmers prefer dark mode? Because light attracts bugs.",
+        "Why was the JavaScript developer sad? He didn’t Node how to Express himself.",
+        "I finally centred a div. I’m telling my grandchildren about it.",
+        "It works on Chrome. Ship Chrome.",
+        "Why did the developer go broke? He used up all his cache.",
+        "My CSS has !important 47 times. Nothing is important anymore.",
+        "Why did the HTML tag break up with the CSS? It felt too styled.",
+        "“Just a quick change to the client’s site,” I said, three hours ago.",
+        "Clear your cache. No, the other cache. No, the other other cache.",
+        "In JavaScript, 0.1 + 0.2 is not 0.3. And you thought your code was the problem.",
+        "A designer, a developer and a client walk into a bar. The client asks for the logo bigger.",
+        "Why did the website go to therapy? It had too many unresolved Promises.",
+        "undefined is not a function. Neither am I before coffee.",
+        "Responsive design means it looks broken on every screen size equally.",
+        "Flexbox: try every property until it works, then never touch it again.",
+        "Why don’t web developers like going outside? Too many cookies to accept.",
+        "404: Joke not found.",
+        "My website loads in 0.2 seconds. On my machine. With no images.",
+        "Why did the button go to the gym? To work on its hover state.",
+        "Internet Explorer: the browser you use to download another browser.",
+        "Why did the developer leave the restaurant? Too many tables in the layout.",
+        "A web developer’s favourite exercise? Div-ing into the deep end.",
+        "z-index: 9999. Still behind the modal.",
+        "Why was the form so tired? It kept getting submitted.",
+        "Git commit -m “fixed CSS”. Git commit -m “actually fixed CSS”. Git commit -m “please”.",
+        "My code doesn’t have bugs. It has undocumented features.",
+        "Why did the JavaScript array get promoted? It knew how to push itself.",
+        "Semicolons in JavaScript: optional, until they aren’t.",
+        "Why was the computer cold? It left its Windows open.",
+      ];
+      function generateRandomJokes(jokes) {
+        const displayJoke = Math.floor(Math.random() * jokes.length);
+        return jokes[displayJoke];
       }
     </script>
   </body>
