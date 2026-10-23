@@ -924,12 +924,32 @@
         color: #0b6ed8;
       }
 
+      #win-command {
+        background-color: black;
+      }
+
       #command-text {
-        white-space: pre;
+        white-space: pre-wrap;
       }
 
       #command-window {
         font-family: "Courier New", monospace;
+        background-color: black;
+        color: var(--color-window-bg);
+      }
+
+      #command-input {
+        background-color: black;
+        outline: none;
+        border-style: none;
+        color: var(--color-window-bg);
+        font-family: "Courier New", monospace;
+        font-size: 16px;
+      }
+
+      .help-text {
+        padding-left: 17ch;
+        text-indent: -17ch;
       }
     </style>
   </head>
@@ -3629,7 +3649,7 @@
       printHelper(
         "For more information on a specific command, type HELP command-name",
       );
-      printHelper("");
+      printHelper(" ");
       commandInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           const command = commandInput.value.trim(" ").toLowerCase();
@@ -3638,40 +3658,22 @@
           commandInput.value = "";
           switch (command) {
             case "help":
-              printHelper(
-                "CLIPPY".padEnd(30) +
-                  "Asks a helpful paperclip for assistance.",
+              printHelp("CLIPPY", "Asks a helpful paperclip for assistance.");
+              printHelp("FFVII", "Adds a new member to your party.");
+              printHelp("FORTUNE", "Displays a random programming joke.");
+              printHelp("GIVEUP", "Tests whether Jesse will give you up.");
+              printHelp("HACK", "Attempts to access the mainframe.");
+              printHelp(
+                "HELP",
+                "Provides Help information for Windows XP commands.",
               );
-              printHelper(
-                "FFVII".padEnd(30) + "Adds a new member to your party.",
+              printHelp("RICKROLL", "Plays a very important video.");
+              printHelp("SHUTDOWN", "Shuts down the computer. Allegedly.");
+              printHelp(
+                "SUDO HIRE JESSE",
+                "Grants administrator approval to hire Jesse.",
               );
-              printHelper(
-                "FORTUNE".padEnd(30) + "Displays a random programming joke.",
-              );
-              printHelper(
-                "GIVEUP".padEnd(30) + "Tests whether Jesse will give you up.",
-              );
-              printHelper(
-                "HACK".padEnd(30) + "Attempts to access the mainframe.",
-              );
-              printHelper(
-                "HELP".padEnd(30) +
-                  "Provides Help information for Windows XP commands.",
-              );
-              printHelper(
-                "RICKROLL".padEnd(30) + "Plays a very important video.",
-              );
-              printHelper(
-                "SHUTDOWN".padEnd(30) + "Shuts down the computer. Allegedly.",
-              );
-              printHelper(
-                "SUDO HIRE JESSE".padEnd(30) +
-                  "Grants administrator approval to hire Jesse.",
-              );
-              printHelper(
-                "VINYL".padEnd(30) +
-                  "Displays a record from Jesse's collection.",
-              );
+              printHelp("VINYL", "Displays a record from Jesse's collection.");
               break;
             case "rickroll":
               break;
@@ -3748,7 +3750,6 @@
                   "HP: 9999 MP: 9999\n" +
                   "Limits: HTML, CSS, JS.",
               );
-              //Reuse this logic from the start up sound
               const ff7BattleSound = new Audio(
                 "src/audio/final-fantasy-vii-victory-fanfare.mp3",
               );
@@ -3770,6 +3771,7 @@
                   " is not recognized as an internal or external command...",
               );
           }
+
           if (target === "command") {
             commandInput.focus();
           }
@@ -3780,10 +3782,17 @@
         commandInput.focus();
       });
 
-      function printHelper(text) {
+      function printHelper(text, className) {
         const printDiv = document.createElement("div");
         printDiv.textContent = text;
+        if (className) {
+          printDiv.classList.add(className);
+        }
         commandText.append(printDiv);
+      }
+
+      function printHelp(name, description) {
+        printHelper(name.padEnd(17) + description, "help-text");
       }
     </script>
   </body>
