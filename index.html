@@ -3729,6 +3729,8 @@
               );
               break;
             case "vinyl":
+              const displayVinyls = generateRandomVinyls(vinyls);
+              printHelper(displayVinyls);
               break;
             case "sudo hire jesse":
               printHelper(
@@ -3835,9 +3837,42 @@
         "Semicolons in JavaScript: optional, until they aren’t.",
         "Why was the computer cold? It left its Windows open.",
       ];
+
       function generateRandomJokes(jokes) {
         const displayJoke = Math.floor(Math.random() * jokes.length);
         return jokes[displayJoke];
+      }
+
+      const vinyls = [
+        "Beach Boys - Pet Sounds",
+        "Pink Floyd - The Dark Side of the Moon",
+        "The Smiths - The Queen is Dead",
+        "King Crimson - In the Court of the Crimson King",
+        "The Police - Ghost in the Machine",
+        "Nirvana - Nevermind",
+        "Beatles - Abbey Road",
+        "Fleetwood Mac - Rumours",
+        "Prince and the Revolution - Purple Rain",
+        "Kraftwerk - Computer World",
+        "Bruce Springsteen - Born to Run",
+        "The Velvet Underground & Nico - The Velvet Underground",
+        "The Jimi Hendrix Experience - Are You Experienced",
+        "Travis Scott - Astro World",
+        "The Weeknd - After Hours",
+        "The Weeknd - Dawn FM",
+        "Bob Dylan - Blonde on Blonde",
+        "Talking Heads - Remain in Light",
+        "David Bowie - Low",
+        "The Rolling Stones - Sticky Fingers",
+        "Radiohead - Ok Computer",
+        "Nas - Illmatic",
+        "Supertramp - Breakfast in America",
+        "Metallica - Master of Puppets",
+      ];
+
+      function generateRandomVinyls(vinyls) {
+        const displayVinyls = Math.floor(Math.random() * vinyls.length);
+        return vinyls[displayVinyls];
       }
     </script>
   </body>
