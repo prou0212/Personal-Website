@@ -312,7 +312,8 @@
 
       .minimize-btn,
       .maximize-btn,
-      .close-btn {
+      .close-btn,
+      .close-btn-magic-word {
         background-color: transparent;
         border-style: none;
         border-width: 1px;
@@ -321,7 +322,8 @@
 
       .minimize-btn img,
       .maximize-btn img,
-      .close-btn img {
+      .close-btn img,
+      .close-btn-magic-word img {
         width: 20px;
         height: auto;
       }
@@ -560,6 +562,11 @@
       #win-downloadcomplete {
         height: 200px;
         width: 350px;
+      }
+
+      #win-magic-word {
+        height: 410px;
+        width: 365px;
       }
 
       .about-header {
@@ -3466,6 +3473,24 @@
         <button id="confirm-btn">OK</button>
       </div>
     </div>
+
+    <div class="win" id="win-magic-word" style="display: none">
+      <div class="titlebar">
+        YOU DIDN'T SAY THE MAGIC WORD!!
+        <div class="window-buttons">
+          <button class="close-btn-magic-word">
+            <img src="src/pictures/window_pic/Exit.png" alt="Exit" />
+          </button>
+        </div>
+      </div>
+      <div class="win-body">
+        <video
+          id="magic-word-video"
+          src="src/audio/magic-word.mp4"
+          loop
+        ></video>
+      </div>
+    </div>
     <script>
       const poweron = document.getElementById("poweron");
       const bootscreen = document.getElementById("bootscreen");
@@ -3484,11 +3509,15 @@
       );
       const downloadbtn = document.querySelectorAll(".download-btn");
       const downloadWin = document.getElementById("win-downloadcomplete");
+      const magicWordWin = document.getElementById("win-magic-word");
       const confirmbtn = document.getElementById("confirm-btn");
       const commandText = document.getElementById("command-text");
       const commandInput = document.getElementById("command-input");
       const windowCommand = document.querySelector("#win-command .win-body");
-
+      const magicWordVideo = document.getElementById("magic-word-video");
+      const closeButtonsMagicWord = document.querySelector(
+        ".close-btn-magic-word",
+      );
       //Global Variables
       let percentageNum = 0;
       let step = 0;
@@ -3614,6 +3643,7 @@
         newButton.addEventListener("click", () => {
           if (win.style.display === "none") {
             win.style.display = "flex";
+            commandInput.focus();
             newButton.classList.add("active");
           } else {
             win.style.display = "none";
@@ -3655,6 +3685,7 @@
         btn.addEventListener("click", () => {
           const win = btn.closest(".win");
           win.classList.toggle("maximize");
+          commandInput.focus();
           win.style.left = "";
           win.style.top = "";
           const restoreButtons = btn.querySelector("img");
@@ -3908,10 +3939,20 @@
           commandInput.style.display = "inline";
           commandInput.focus();
           setTimeout(() => {
-            window.open("https://www.youtube.com/shorts/ALxrbSNFfxQ");
+            magicWordWin.style.display = "flex";
+            try {
+              magicWordVideo.play();
+            } catch (error) {
+              console.log(error);
+            }
           }, 500);
         }
       }
+
+      closeButtonsMagicWord.addEventListener("click", () => {
+        magicWordWin.style.display = "none";
+        magicWordVideo.pause();
+      });
     </script>
   </body>
 </html>
