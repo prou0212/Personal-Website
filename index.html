@@ -3514,6 +3514,7 @@
       const commandText = document.getElementById("command-text");
       const commandInput = document.getElementById("command-input");
       const windowCommand = document.querySelector("#win-command .win-body");
+      const commandWin = document.querySelector("#win-command");
       const magicWordVideo = document.getElementById("magic-word-video");
       const closeButtonsMagicWord = document.querySelector(
         ".close-btn-magic-word",
@@ -3705,7 +3706,14 @@
             win.taskbarButton.remove();
             win.taskbarButton = undefined;
           }
+          if (win === commandWin) {
+            commandText.textContent = "";
+            commandInput.value = "";
+            commandInput.style.display = "inline";
+            startCommandText();
+          }
         });
+        startCommandText();
       });
 
       titlebars.forEach((titlebar) => {
@@ -3745,12 +3753,15 @@
         downloadWin.style.display = "none";
       });
 
-      printHelper("Microsoft Windows XP [Version 5.1.2600]");
-      printHelper("<C> Copyright 1985-2001 Microsoft Corp.");
-      printHelper(
-        "For more information on a specific command, type HELP command-name",
-      );
-      printHelper(" ");
+      function startCommandText() {
+        printHelper("Microsoft Windows XP [Version 5.1.2600]");
+        printHelper("<C> Copyright 1985-2001 Microsoft Corp.");
+        printHelper(
+          "For more information on a specific command, type HELP command-name",
+        );
+        printHelper(" ");
+      }
+
       commandInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           const command = commandInput.value.trim(" ").toLowerCase();
