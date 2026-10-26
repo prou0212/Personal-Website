@@ -947,6 +947,7 @@
         color: var(--color-window-bg);
         font-family: var(--font-courier);
         font-size: 16px;
+        text-decoration: none;
       }
 
       .help-text {
@@ -3472,11 +3473,15 @@
       const desktop = document.getElementById("desktop");
       const taskbar = document.getElementById("taskbar");
       const icons = document.querySelectorAll(".icon");
+      const titlebars = document.querySelectorAll(".titlebar");
       const closeButtons = document.querySelectorAll(".close-btn");
       const minimizeButtons = document.querySelectorAll(".minimize-btn");
       const maximizeButtons = document.querySelectorAll(".maximize-btn");
       const startbtn = document.getElementById("startbtn");
       const startmenu = document.getElementById("startmenu");
+      const startItems = document.querySelectorAll(
+        ".start-menu-icon[data-win]",
+      );
       const downloadbtn = document.querySelectorAll(".download-btn");
       const downloadWin = document.getElementById("win-downloadcomplete");
       const confirmbtn = document.getElementById("confirm-btn");
@@ -3484,9 +3489,80 @@
       const commandInput = document.getElementById("command-input");
       const windowCommand = document.querySelector("#win-command .win-body");
 
+      //Global Variables
+      let percentageNum = 0;
+      let step = 0;
+      let draggedWin = null;
+      let isDragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+      let hackPercent = null;
+
+      //Arrays
+      const jokes = [
+        "There are 10 types of people in the world: those who understand binary and those who don’t.",
+        "Why do programmers prefer dark mode? Because light attracts bugs.",
+        "Why was the JavaScript developer sad? He didn’t Node how to Express himself.",
+        "I finally centred a div. I’m telling my grandchildren about it.",
+        "It works on Chrome. Ship Chrome.",
+        "Why did the developer go broke? He used up all his cache.",
+        "My CSS has !important 47 times. Nothing is important anymore.",
+        "Why did the HTML tag break up with the CSS? It felt too styled.",
+        "“Just a quick change to the client’s site,” I said, three hours ago.",
+        "Clear your cache. No, the other cache. No, the other other cache.",
+        "In JavaScript, 0.1 + 0.2 is not 0.3. And you thought your code was the problem.",
+        "A designer, a developer and a client walk into a bar. The client asks for the logo bigger.",
+        "Why did the website go to therapy? It had too many unresolved Promises.",
+        "undefined is not a function. Neither am I before coffee.",
+        "Responsive design means it looks broken on every screen size equally.",
+        "Flexbox: try every property until it works, then never touch it again.",
+        "Why don’t web developers like going outside? Too many cookies to accept.",
+        "404: Joke not found.",
+        "My website loads in 0.2 seconds. On my machine. With no images.",
+        "Why did the button go to the gym? To work on its hover state.",
+        "Internet Explorer: the browser you use to download another browser.",
+        "Why did the developer leave the restaurant? Too many tables in the layout.",
+        "A web developer’s favourite exercise? Div-ing into the deep end.",
+        "z-index: 9999. Still behind the modal.",
+        "Why was the form so tired? It kept getting submitted.",
+        "Git commit -m “fixed CSS”. Git commit -m “actually fixed CSS”. Git commit -m “please”.",
+        "My code doesn’t have bugs. It has undocumented features.",
+        "Why did the JavaScript array get promoted? It knew how to push itself.",
+        "Semicolons in JavaScript: optional, until they aren’t.",
+        "Why was the computer cold? It left its Windows open.",
+      ];
+
+      const vinyls = [
+        "Beach Boys - Pet Sounds",
+        "Pink Floyd - The Dark Side of the Moon",
+        "The Smiths - The Queen is Dead",
+        "King Crimson - In the Court of the Crimson King",
+        "The Police - Ghost in the Machine",
+        "Nirvana - Nevermind",
+        "Beatles - Abbey Road",
+        "Fleetwood Mac - Rumours",
+        "Prince and the Revolution - Purple Rain",
+        "Kraftwerk - Computer World",
+        "Bruce Springsteen - Born to Run",
+        "The Velvet Underground & Nico - The Velvet Underground",
+        "The Jimi Hendrix Experience - Are You Experienced",
+        "Travis Scott - Astro World",
+        "The Weeknd - After Hours",
+        "The Weeknd - Dawn FM",
+        "Bob Dylan - Blonde on Blonde",
+        "Talking Heads - Remain in Light",
+        "David Bowie - Low",
+        "The Rolling Stones - Sticky Fingers",
+        "Radiohead - Ok Computer",
+        "Nas - Illmatic",
+        "Supertramp - Breakfast in America",
+        "Metallica - Master of Puppets",
+      ];
+
+      const percentClimb = [12, 25, 40, 65, 88, 99, 100];
       // taskbar.style.display = "none";
 
-      //Clicking Power Button on Home Screen
+      // //Clicking Power Button on Home Screen
       // powerbutton.addEventListener("click", () => {
       //   poweron.style.display = "none";
       //   bootscreen.style.display = "flex";
@@ -3524,6 +3600,7 @@
           win.taskbarButton.classList.add("active");
           return;
         }
+
         const newButton = document.createElement("button");
         const iconImg = icon.querySelector("img");
         const taskBarIcon = document.createElement("img");
@@ -3551,9 +3628,6 @@
         });
       });
 
-      const startItems = document.querySelectorAll(
-        ".start-menu-icon[data-win]",
-      );
       startItems.forEach((item) => {
         item.addEventListener("click", () => {
           openWindow(item);
@@ -3602,12 +3676,6 @@
           }
         });
       });
-
-      let draggedWin = null;
-      let isDragging = false;
-      const titlebars = document.querySelectorAll(".titlebar");
-      let offsetX = 0;
-      let offsetY = 0;
 
       titlebars.forEach((titlebar) => {
         titlebar.addEventListener("mousedown", (e) => {
@@ -3658,6 +3726,7 @@
           console.log(command);
           printHelper("C:\\> " + command);
           commandInput.value = "";
+          commandInput.focus();
           switch (command) {
             case "help":
               printHelp("CLIPPY", "Asks a helpful paperclip for assistance.");
@@ -3689,6 +3758,12 @@
               );
               break;
             case "hack":
+              printHelper("Accessing mainframe...");
+              commandInput.style.display = "none";
+              step = 0;
+              hackPercent = printHelper("0%");
+              dynamicPercentage();
+
               break;
             case "shutdown":
               printHelper(
@@ -3755,8 +3830,10 @@
             case "ffvii":
               printHelper(
                 "Jesse Proulx has joined your party!\n" +
+                  "Weapon: Buster Sword\n" +
+                  "Rank: First Class Soldier\n" +
                   "HP: 9999 MP: 9999\n" +
-                  "Limits: HTML, CSS, JS.",
+                  "Limits: HTML, CSS, JavaScript, TypeScript, React, PHP, Node.js",
               );
               const ff7BattleSound = new Audio(
                 "src/audio/final-fantasy-vii-victory-fanfare.mp3",
@@ -3778,12 +3855,9 @@
             default:
               printHelper(
                 command +
-                  " is not recognized as an internal or external command...",
+                  " is not recognized as an internal or external command,\n" +
+                  "operable program or batch file.",
               );
-          }
-
-          if (target === "command") {
-            commandInput.focus();
           }
         }
       });
@@ -3799,80 +3873,44 @@
           printDiv.classList.add(className);
         }
         commandText.append(printDiv);
+        return printDiv;
       }
 
       function printHelp(name, description) {
         printHelper(name.padEnd(17) + description, "help-text");
       }
 
-      const jokes = [
-        "There are 10 types of people in the world: those who understand binary and those who don’t.",
-        "Why do programmers prefer dark mode? Because light attracts bugs.",
-        "Why was the JavaScript developer sad? He didn’t Node how to Express himself.",
-        "I finally centred a div. I’m telling my grandchildren about it.",
-        "It works on Chrome. Ship Chrome.",
-        "Why did the developer go broke? He used up all his cache.",
-        "My CSS has !important 47 times. Nothing is important anymore.",
-        "Why did the HTML tag break up with the CSS? It felt too styled.",
-        "“Just a quick change to the client’s site,” I said, three hours ago.",
-        "Clear your cache. No, the other cache. No, the other other cache.",
-        "In JavaScript, 0.1 + 0.2 is not 0.3. And you thought your code was the problem.",
-        "A designer, a developer and a client walk into a bar. The client asks for the logo bigger.",
-        "Why did the website go to therapy? It had too many unresolved Promises.",
-        "undefined is not a function. Neither am I before coffee.",
-        "Responsive design means it looks broken on every screen size equally.",
-        "Flexbox: try every property until it works, then never touch it again.",
-        "Why don’t web developers like going outside? Too many cookies to accept.",
-        "404: Joke not found.",
-        "My website loads in 0.2 seconds. On my machine. With no images.",
-        "Why did the button go to the gym? To work on its hover state.",
-        "Internet Explorer: the browser you use to download another browser.",
-        "Why did the developer leave the restaurant? Too many tables in the layout.",
-        "A web developer’s favourite exercise? Div-ing into the deep end.",
-        "z-index: 9999. Still behind the modal.",
-        "Why was the form so tired? It kept getting submitted.",
-        "Git commit -m “fixed CSS”. Git commit -m “actually fixed CSS”. Git commit -m “please”.",
-        "My code doesn’t have bugs. It has undocumented features.",
-        "Why did the JavaScript array get promoted? It knew how to push itself.",
-        "Semicolons in JavaScript: optional, until they aren’t.",
-        "Why was the computer cold? It left its Windows open.",
-      ];
-
       function generateRandomJokes(jokes) {
         const displayJoke = Math.floor(Math.random() * jokes.length);
         return jokes[displayJoke];
       }
 
-      const vinyls = [
-        "Beach Boys - Pet Sounds",
-        "Pink Floyd - The Dark Side of the Moon",
-        "The Smiths - The Queen is Dead",
-        "King Crimson - In the Court of the Crimson King",
-        "The Police - Ghost in the Machine",
-        "Nirvana - Nevermind",
-        "Beatles - Abbey Road",
-        "Fleetwood Mac - Rumours",
-        "Prince and the Revolution - Purple Rain",
-        "Kraftwerk - Computer World",
-        "Bruce Springsteen - Born to Run",
-        "The Velvet Underground & Nico - The Velvet Underground",
-        "The Jimi Hendrix Experience - Are You Experienced",
-        "Travis Scott - Astro World",
-        "The Weeknd - After Hours",
-        "The Weeknd - Dawn FM",
-        "Bob Dylan - Blonde on Blonde",
-        "Talking Heads - Remain in Light",
-        "David Bowie - Low",
-        "The Rolling Stones - Sticky Fingers",
-        "Radiohead - Ok Computer",
-        "Nas - Illmatic",
-        "Supertramp - Breakfast in America",
-        "Metallica - Master of Puppets",
-      ];
-
       function generateRandomVinyls(vinyls) {
         const displayVinyls = Math.floor(Math.random() * vinyls.length);
         return vinyls[displayVinyls];
+      }
+
+      function dynamicPercentage() {
+        percentageNum = percentClimb[step];
+        console.log(percentageNum);
+        hackPercent.textContent = percentageNum + "%";
+        step += 1;
+        if (percentageNum < 100) {
+          setTimeout(() => {
+            dynamicPercentage();
+          }, 500);
+        }
+        if (percentageNum == 100) {
+          printHelper("PERMISSION DENIED...and....");
+          for (let i = 0; i < 20; i++) {
+            printHelper("YOU DIDN'T SAY THE MAGIC WORD!");
+          }
+          commandInput.style.display = "inline";
+          commandInput.focus();
+          setTimeout(() => {
+            window.open("https://www.youtube.com/shorts/ALxrbSNFfxQ");
+          }, 500);
+        }
       }
     </script>
   </body>
