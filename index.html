@@ -3840,7 +3840,7 @@
               break;
             case "shutdown":
               printHelper(
-                'When you can "shutdown" a bowser. Let me know, I want to know!!!!',
+                'When you can "shutdown" a browser. Let me know, I want to know!!!!',
               );
               break;
             case "clippy":
@@ -3979,17 +3979,21 @@
             printHelper("YOU DIDN'T SAY THE MAGIC WORD!");
           }
           setTimeout(() => {
-            magicWordWin.style.display = "flex";
-            try {
-              magicWordVideo.load();
-              magicWordVideo.play();
-              cCommand.style.display = "inline";
-              commandInput.style.display = "inline";
-              commandInput.focus();
-            } catch (error) {
-              console.log(error);
-            }
+            playMagicWordVideo();
+            cCommand.style.display = "inline";
+            commandInput.style.display = "inline";
+            commandInput.focus();
           }, 1500);
+        }
+      }
+
+      async function playMagicWordVideo() {
+        try {
+          magicWordWin.style.display = "flex";
+          magicWordVideo.load();
+          await magicWordVideo.play();
+        } catch (error) {
+          console.log(error);
         }
       }
 
@@ -4004,18 +4008,21 @@
         printHelper("You will be rick rolled momentarily");
         commandInput.focus();
         setTimeout(() => {
-          rickRollWin.style.display = "flex";
+          loadPlayRickRoll();
           cCommand.style.display = "inline";
-          try {
-            rickRollVideo.load();
-            rickRollVideo.play();
-            commandInput.style.display = "inline";
-          } catch (error) {
-            console.log("Video not playing", error);
-          }
+          commandInput.style.display = "inline";
         }, 2000);
       }
 
+      async function loadPlayRickRoll() {
+        try {
+          rickRollWin.style.display = "flex";
+          rickRollVideo.load();
+          await rickRollVideo.play();
+        } catch (error) {
+          console.log("Video not playing", error);
+        }
+      }
       closeButtonsRickRoll.addEventListener("click", () => {
         rickRollWin.style.display = "none";
         rickRollVideo.pause();
