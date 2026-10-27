@@ -3552,6 +3552,7 @@
       );
       //Global Variables
       let percentageNum = 0;
+      let timerId = null;
       let step = 0;
       let draggedWin = null;
       let isDragging = false;
@@ -3743,6 +3744,7 @@
             commandText.textContent = "";
             commandInput.value = "";
             commandInput.style.display = "inline";
+            clearTimeout(timerId);
             startCommandText();
           }
         });
@@ -3969,16 +3971,16 @@
         hackPercent.textContent = percentageNum + "%";
         step += 1;
         if (percentageNum < 100) {
-          setTimeout(() => {
+          timerId = setTimeout(() => {
             dynamicPercentage();
           }, 500);
         }
-        if (percentageNum == 100) {
+        if (percentageNum === 100) {
           printHelper("PERMISSION DENIED...and....");
           for (let i = 0; i < 20; i++) {
             printHelper("YOU DIDN'T SAY THE MAGIC WORD!");
           }
-          setTimeout(() => {
+          timerId = setTimeout(() => {
             playMagicWordVideo();
             cCommand.style.display = "inline";
             commandInput.style.display = "inline";
