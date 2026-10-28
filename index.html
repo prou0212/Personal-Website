@@ -3799,7 +3799,7 @@
 
       commandInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-          const command = commandInput.value.trim(" ").toLowerCase();
+          const command = commandInput.value.trim().toLowerCase();
           console.log(command);
           printHelper("C:\\> " + command);
           commandInput.value = "";
@@ -3878,10 +3878,11 @@
                 "           |_______________________________________________|\n",
               );
               break;
-            case "vinyl":
+            case "vinyl": {
               const displayVinyls = generateRandomVinyls(vinyls);
               printHelper(displayVinyls);
               break;
+            }
             case "sudo hire jesse":
               printHelper(
                 "'sudo' is not recognized as an internal or external command,\n" +
@@ -3902,7 +3903,7 @@
                   "Next step: jtaproulx1@hotmail.com or (613) 276-1584",
               );
               break;
-            case "ffvii":
+            case "ffvii": {
               printHelper(
                 "Jesse Proulx has joined your party!\n" +
                   "Weapon: Buster Sword\n" +
@@ -3923,10 +3924,12 @@
               }
               boot();
               break;
-            case "fortune":
+            }
+            case "fortune": {
               const displayJoke = generateRandomJokes(jokes);
               printHelper(displayJoke);
               break;
+            }
             default:
               printHelper(
                 command +
