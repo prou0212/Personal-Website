@@ -250,7 +250,6 @@
         );
         display: flex;
         align-items: center;
-        padding: 0 4px 0 0;
       }
 
       .taskbar-btn {
@@ -286,6 +285,29 @@
         height: 16px;
         vertical-align: middle;
         margin-right: 4px;
+      }
+
+      #clock-settings {
+        display: flex;
+        align-items: center;
+        background-color: #0d90eb;
+        margin-left: auto;
+        height: var(--taskbar-height);
+        padding-left: 10px;
+        padding-right: 10px;
+        gap: 3px;
+      }
+
+      #clock-settings img {
+        padding: 5px 0;
+        width: 18px;
+        height: auto;
+      }
+
+      #clock {
+        color: var(--color-text-light);
+        font-family: var(--font-system);
+        font-size: var(--text-xs);
       }
 
       .win {
@@ -1064,6 +1086,15 @@
         />
         Start
       </button>
+      <div id="clock-settings">
+        <img src="src/pictures/taskbar_icons/Tour XP.png" alt="Tour XP icon" />
+        <img
+          src="src/pictures/taskbar_icons/Security Error.png"
+          alt="security error icon"
+        />
+        <img src="src/pictures/taskbar_icons/Volume.png" alt="volume icon" />
+        <span id="clock" onload="startTime()"></span>
+      </div>
     </div>
     <div class="win" id="win-aboutme">
       <div class="titlebar">
@@ -3522,6 +3553,7 @@
       const powerbutton = document.getElementById("powerbtn");
       const desktop = document.getElementById("desktop");
       const taskbar = document.getElementById("taskbar");
+      const clock = document.getElementById("clock");
       const icons = document.querySelectorAll(".icon");
       const titlebars = document.querySelectorAll(".titlebar");
       const closeButtons = document.querySelectorAll(".close-btn");
@@ -3623,7 +3655,6 @@
 
       const percentClimb = [12, 25, 40, 65, 88, 99, 100];
 
-      const countdown = [3, 2, 1];
       // taskbar.style.display = "none";
 
       // //Clicking Power Button on Home Screen
@@ -4032,6 +4063,36 @@
         rickRollWin.style.display = "none";
         rickRollVideo.pause();
       });
+
+      function clockStartTime() {
+        let ampm = "AM";
+        console.log("clock running");
+        const time = new Date();
+        let hours = time.getHours();
+        if (hours >= 12) {
+          ampm = "PM";
+        }
+        hours = hours % 12;
+        if (hours === 0) {
+          hours = 12;
+        }
+        let minutes = time.getMinutes();
+        minutes = checkTime(minutes);
+        try {
+          clock.innerHTML = hours + ":" + minutes + " " + ampm;
+          setTimeout(clockStartTime, 1000);
+        } catch (error) {
+          console.log("error present in clock", error);
+        }
+      }
+      clockStartTime();
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
     </script>
   </body>
 </html>
