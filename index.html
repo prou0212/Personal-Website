@@ -1100,6 +1100,7 @@
         />
         Start
       </button>
+      <div id="taskbar-buttons"></div>
       <div id="clock-settings">
         <img src="src/pictures/taskbar_icons/Tour XP.png" alt="Tour XP icon" />
         <img
@@ -1107,7 +1108,7 @@
           alt="security error icon"
         />
         <img src="src/pictures/taskbar_icons/Volume.png" alt="volume icon" />
-        <span id="clock" onload="startTime()"></span>
+        <span id="clock"></span>
       </div>
     </div>
     <div class="win" id="win-aboutme">
@@ -3562,27 +3563,28 @@
       </div>
     </div>
     <script>
-      const poweron = document.getElementById("poweron");
-      const bootscreen = document.getElementById("bootscreen");
-      const powerbutton = document.getElementById("powerbtn");
+      const powerOn = document.getElementById("poweron");
+      const bootScreen = document.getElementById("bootscreen");
+      const powerButton = document.getElementById("powerbtn");
       const desktop = document.getElementById("desktop");
       const taskbar = document.getElementById("taskbar");
+      const taskbarButtons = document.getElementById("taskbar-buttons");
       const clock = document.getElementById("clock");
       const icons = document.querySelectorAll(".icon");
-      const titlebars = document.querySelectorAll(".titlebar");
+      const titleBars = document.querySelectorAll(".titlebar");
       const closeButtons = document.querySelectorAll(".close-btn");
       const minimizeButtons = document.querySelectorAll(".minimize-btn");
       const maximizeButtons = document.querySelectorAll(".maximize-btn");
-      const startbtn = document.getElementById("startbtn");
-      const startmenu = document.getElementById("startmenu");
+      const startBtn = document.getElementById("startbtn");
+      const startMenu = document.getElementById("startmenu");
       const startItems = document.querySelectorAll(
         ".start-menu-icon[data-win]",
       );
-      const downloadbtn = document.querySelectorAll(".download-btn");
+      const downloadBtn = document.querySelectorAll(".download-btn");
       const downloadWin = document.getElementById("win-downloadcomplete");
       const magicWordWin = document.getElementById("win-magic-word");
       const rickRollWin = document.getElementById("win-rick-roll");
-      const confirmbtn = document.getElementById("confirm-btn");
+      const confirmBtn = document.getElementById("confirm-btn");
       const cCommand = document.getElementById("c-command");
       const commandText = document.getElementById("command-text");
       const commandInput = document.getElementById("command-input");
@@ -3672,13 +3674,13 @@
       // taskbar.style.display = "none";
 
       // //Clicking Power Button on Home Screen
-      // powerbutton.addEventListener("click", () => {
-      //   poweron.style.display = "none";
-      //   bootscreen.style.display = "flex";
+      // powerButton.addEventListener("click", () => {
+      //   powerOn.style.display = "none";
+      //   bootScreen.style.display = "flex";
 
       //   //Timer for Loading Screen
       //   setTimeout(() => {
-      //     bootscreen.style.display = "none";
+      //     bootScreen.style.display = "none";
       //     desktop.style.display = "block";
       //     taskbar.style.display = "flex";
 
@@ -3719,7 +3721,7 @@
         win.taskbarButton = newButton;
         newButton.textContent = icon.textContent;
         newButton.prepend(taskBarIcon);
-        taskbar.append(newButton);
+        taskbarButtons.append(newButton);
         newButton.addEventListener("click", () => {
           if (win.style.display === "none") {
             win.style.display = "flex";
@@ -3741,15 +3743,15 @@
       startItems.forEach((item) => {
         item.addEventListener("click", () => {
           openWindow(item);
-          startmenu.style.display = "none";
+          startMenu.style.display = "none";
         });
       });
 
-      startbtn.addEventListener("click", () => {
-        if (startmenu.style.display === "none") {
-          startmenu.style.display = "flex";
+      startBtn.addEventListener("click", () => {
+        if (startMenu.style.display === "none") {
+          startMenu.style.display = "flex";
         } else {
-          startmenu.style.display = "none";
+          startMenu.style.display = "none";
         }
       });
 
@@ -3796,7 +3798,7 @@
       });
       startCommandText();
 
-      titlebars.forEach((titlebar) => {
+      titleBars.forEach((titlebar) => {
         titlebar.addEventListener("mousedown", (e) => {
           isDragging = true;
           draggedWin = titlebar.closest(".win");
@@ -3823,13 +3825,13 @@
         }
       });
 
-      downloadbtn.forEach(function (downloadContent) {
+      downloadBtn.forEach(function (downloadContent) {
         downloadContent.addEventListener("click", () => {
           downloadWin.style.display = "flex";
         });
       });
 
-      confirmbtn.addEventListener("click", () => {
+      confirmBtn.addEventListener("click", () => {
         downloadWin.style.display = "none";
       });
 
@@ -4080,7 +4082,6 @@
 
       function clockStartTime() {
         let ampm = "AM";
-        console.log("clock running");
         const time = new Date();
         let hours = time.getHours();
         if (hours >= 12) {
