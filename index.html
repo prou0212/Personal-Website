@@ -210,8 +210,7 @@
       #desktop {
         inset: 0;
         position: fixed;
-        /* display: none; */
-        display: block;
+        display: none;
         background: linear-gradient(
           to bottom,
           #4a90d9 0%,
@@ -1008,6 +1007,9 @@
       }
 
       @media screen and (max-width: 600px) {
+        #poweron {
+          border-radius: 0;
+        }
         .win {
           top: 0;
           left: 0;
@@ -1025,14 +1027,28 @@
         .maximize-btn {
           display: none;
         }
+
+        #win-downloadcomplete {
+          display: none;
+        }
+
+        #win-rick-roll {
+          width: 350px;
+          height: 350px;
+        }
+
+        #win-rick-roll video {
+          width: auto;
+          height: auto;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- <div id="poweron">
+    <div id="poweron">
       <div id="intro">
         <img
-          src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+          src="src/pictures/professional_pic/jesse_proulx_profile.jpeg"
           alt="jesse proulx profile picture"
         />
         <span class="lexend-zetta" id="intro-title"
@@ -1060,7 +1076,7 @@
         src="src/pictures/bootup_icons/microsoft_logo.png"
         alt="official microsoft logo"
       />
-    </div> -->
+    </div>
     <div id="desktop">
       <div id="desktop-icons">
         <div class="icon" data-win="aboutme">
@@ -1328,7 +1344,7 @@
           <div class="personal-container">
             <div class="about-header">
               <img
-                src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+                src="src/pictures/professional_pic/jesse_proulx_profile.jpeg"
                 alt="jesse_proulx_profile"
               />
               <div>
@@ -3408,7 +3424,7 @@
     <div id="startmenu" style="display: none">
       <div id="user-profile">
         <img
-          src="src/pictures/professional_pic/jesse_proulx_profile.jpg"
+          src="src/pictures/professional_pic/jesse_proulx_profile.jpeg"
           alt="profile-pictures"
         />
         <span id="profile-name">Jesse Proulx</span>
@@ -3675,31 +3691,31 @@
 
       const percentClimb = [12, 25, 40, 65, 88, 99, 100];
 
-      // taskbar.style.display = "none";
+      taskbar.style.display = "none";
 
-      // //Clicking Power Button on Home Screen
-      // powerButton.addEventListener("click", () => {
-      //   powerOn.style.display = "none";
-      //   bootScreen.style.display = "flex";
+      //Clicking Power Button on Home Screen
+      powerButton.addEventListener("click", () => {
+        powerOn.style.display = "none";
+        bootScreen.style.display = "flex";
 
-      //   //Timer for Loading Screen
-      //   setTimeout(() => {
-      //     bootScreen.style.display = "none";
-      //     desktop.style.display = "block";
-      //     taskbar.style.display = "flex";
+        //Timer for Loading Screen
+        setTimeout(() => {
+          bootScreen.style.display = "none";
+          desktop.style.display = "block";
+          taskbar.style.display = "flex";
 
-      //     const chime = new Audio("src/audio/startup.mp3");
-      //     chime.volume = 1;
-      //     async function boot() {
-      //       try {
-      //         await chime.play();
-      //       } catch (error) {
-      //         console.log("Error: Audio cannot be played", error);
-      //       }
-      //     }
-      //     boot();
-      //   }, 5000);
-      // });
+          const chime = new Audio("src/audio/startup.mp3");
+          chime.volume = 1;
+          async function boot() {
+            try {
+              await chime.play();
+            } catch (error) {
+              console.log("Error: Audio cannot be played", error);
+            }
+          }
+          boot();
+        }, 5000);
+      });
 
       function openWindow(icon) {
         const target = icon.dataset.win;
