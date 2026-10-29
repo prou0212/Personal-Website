@@ -1006,6 +1006,26 @@
         padding-left: 17ch;
         text-indent: -17ch;
       }
+
+      @media screen and (max-width: 600px) {
+        .win {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: var(--taskbar-height);
+          width: auto;
+          height: auto;
+        }
+
+        .sidebar-window {
+          display: none;
+        }
+
+        .minimize-btn,
+        .maximize-btn {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
